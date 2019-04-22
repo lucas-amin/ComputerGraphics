@@ -6,7 +6,7 @@ from OpenGL.GLUT import *
 import glm
 import sys
 from ShaderProgram import ShaderProgram
-
+from loader import Map
 
 # Globals
 vertex_shader = open("simple3.vert").read()
@@ -17,7 +17,7 @@ def Keyboard(key, x, y):
     if key is 27 or key is b'q' or key is b'Q':
         sys.exit(0)
     
-    '''if key is b'd':
+    if key is b'd':
         transformation_code = int(input("Next transformation:"))
 
         if transformation_code is 1:
@@ -58,7 +58,10 @@ def Keyboard(key, x, y):
             trans = glm.scale(trans, glm.vec3(s_x, s_y, s_z))
     
         transformLoc = glGetUniformLocation(program.program_id, "transform")
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))'''
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
+
+        Display()
+
     
 trans = 0
 vao = program = 0
@@ -68,7 +71,26 @@ def Init():
     vao = glGenVertexArrays(1)
     glBindVertexArray(vao)
 
-    vertices = np.array([
+    map = Map()
+
+    result = map.get_map()
+
+    vertices = list()
+    colors = list()
+    for i in range(len(result)):
+        for j in range(len(result[i])):
+            vertices.extend([i, j, 0.0, 1.0])
+            colors.extend([0.583, 0.771, 0.014, 1.0,])
+
+    print(vertices)
+
+
+    vertices = np.array(vertices,dtype=np.float32)
+    colors = np.array(colors,dtype=np.float32)
+
+    print(vertices)
+
+    '''vertices = np.array([
         -0.5,-0.5,-0.5, 1.0,
         -0.5,-0.5, 0.5, 1.0,
         -0.5, 0.5, 0.5, 1.0,
@@ -105,9 +127,9 @@ def Init():
          0.5, 0.5, 0.5, 1.0,
         -0.5, 0.5, 0.5, 1.0,
          0.5,-0.5, 0.5, 1.0
-    ], dtype=np.float32)
+    ], dtype=np.float32)'''
 
-    colors = np.array([
+    '''colors = np.array([
         0.583, 0.771, 0.014, 1.0,
         0.609, 0.115, 0.436, 1.0,
         0.327, 0.483, 0.844, 1.0,
@@ -144,7 +166,7 @@ def Init():
         0.673, 0.211, 0.457, 1.0,
         0.820, 0.883, 0.371, 1.0,
         0.982, 0.099, 0.879, 1.0
-    ], dtype=np.float32)
+    ], dtype=np.float32)'''
 
 
     # Create vertex buffer object (vbo)
@@ -220,7 +242,7 @@ def Init():
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
             
     # Enable depth test
-    # glEnable(GL_DEPTH_TEST)
+    glEnable(GL_DEPTH_TEST)
 
 
 def Display():
