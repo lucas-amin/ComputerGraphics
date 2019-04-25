@@ -14,104 +14,56 @@ import time
 vertex_shader = open("simple3.vert").read()
 fragment_shader = open("simple3.frag").read()
 
-counter = 0
+# Records the time of called loop for frame synchronization
+lastCall = 0
 
+# Global transformation matrix   
+trans = 0
 
-class Walk():
-    def __init__(self):
-        self.camera_speed = 0.001; # adjust accordingly
-        self.camera_pos = glm.vec3(0.0, 0.0, 3.0)
-        self.camera_front = glm.vec3(0.0,0.0, -1.0)
-        self.camera_up = glm.vec3(0.0, 1.0, 0.0)
+# Initialization variables
+vao = program = 0
+
+# The glm::LookAt function requires a position, target and up vector respectively. 
+# This creates a view matrix that is the same as the one used in the previous tutorial. 
+def look_at(time):
+    radius = 2.5e-4
+    time *= 3
+
+    camX = math.sin(3 * time) * radius 
+    camY = math.sin(2 * time) * radius 
+    camZ = math.cos(time) * radius 
+
+    view = glm.lookAt(glm.vec3(camX, camY, camZ), glm.vec3(0.0, 0.0, 0.0), glm.vec3(0.0, 1.0, 0.0))
+
+    return view
+
+# Loop used for automatic look at function calls
+def Loop():
+    global trans, lastCall
+    actual_time = time.time()
+    difference = actual_time - lastCall
+
+    view = look_at(difference)
     
-    def move_up(self):
-        self.camera_pos += self.camera_speed * self.camera_front;
+    trans = trans * view
 
-    def move_down(self):
-        self.camera_pos -= self.camera_speed * self.camera_front;
+    # Bind transformation matrix.
+    transformLoc = glGetUniformLocation(program.program_id, "transform")
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
 
-    def move_left(self):
-        self.camera_pos -= self.get_normalization()
-
-    def move_right(self):
-        self.camera_pos += self.get_normalization()
-
-    def get_normalization(self):
-        return glm.normalize(glm.cross(self.camera_front, self.camera_up)) * self.camera_speed
-
-    def get_view(self):
-        return glm.lookAt(self.camera_pos, self.camera_pos + self.camera_front, self.camera_up)
-
-    def update(self, trans):
-        view = self.get_view()
-
-        trans = trans * view
-        print("____", trans)
-
-        # Bind transformation matrix.
-        transformLoc = glGetUniformLocation(program.program_id, "transform")
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
-                
-        # Enable depth test
-        glEnable(GL_DEPTH_TEST)
-
-        Display()
-
-
-walker = Walk()
-
-
+    lastCall = time.time()
+    Display()
+    
+# Acts upon keyboard actions
 def Keyboard(key, x, y):
-    global trans, program, counter, walker
+    global trans, program, counter5
 
+    # Exits program
     if key is 27 or key is b'q' or key is b'Q':
         sys.exit(0)
     
-    if key is b'e':        
-        camera_pos = glm.vec3(0.0, 0.0, 3.0)
-        camera_target = glm.vec3(0.0, 0.0, 0.0)
-        camera_direction = glm.normalize(camera_pos - camera_target)
-
-        up = glm.vec3(0.0, 1.0, 0.0)
-        camera_right = glm.normalize(glm.cross(up, camera_direction))
-        camera_up = glm.cross(camera_direction, camera_right)
-
-        radius = 0.1;
-        actual_time = counter
-        counter += 0.01
-        
-        camX = math.sin(actual_time) * radius
-        camZ = math.cos(actual_time) * radius
-        view = glm.lookAt(glm.vec3(camX, 0.0, camZ), glm.vec3(0.0, 0.0, 0.0), glm.vec3(0.0, 1.0, 0.0))
-        print(trans)
-
-        trans = trans * view
-
-        # Bind transformation matrix.
-        transformLoc = glGetUniformLocation(program.program_id, "transform")
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
-                
-        # Enable depth test
-        glEnable(GL_DEPTH_TEST)
-
-        Display()
-
-    if key is b'w':
-        walker.move_up()
-
-    if key is b's':
-        walker.move_down()
-
-    if key is b'a':
-        walker.move_left()
-
-    if key is b'd':
-        walker.move_right()
-
-    # walker.update(trans)
-
-
-    '''if key is b'd':
+    # Perform manual transformations
+    if key is b't':
         transformation_code = int(input("Next transformation:"))
 
         if transformation_code is 1:
@@ -152,11 +104,9 @@ def Keyboard(key, x, y):
             trans = glm.scale(trans, glm.vec3(s_x, s_y, s_z))
     
         transformLoc = glGetUniformLocation(program.program_id, "transform")
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))'''
-    
-trans = 0
-vao = program = 0
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
 
+        Display()
 
 def Init():
     global program, vao, trans
@@ -242,7 +192,6 @@ def Init():
         0.982, 0.099, 0.879, 1.0
     ], dtype=np.float32)
 
-
     # Create vertex buffer object (vbo)
     vbo = glGenBuffers(1)
     glBindBuffer(GL_ARRAY_BUFFER, vbo)
@@ -266,50 +215,8 @@ def Init():
     # Compute a fix transformation matrix.
     trans = glm.mat4(1)
 
-    i = 0
-    while i < 2:
-        transformation_code = int(input("Next transformation:"))
-
-        if transformation_code is 1:
-            print("Rotation! ")
-            transformation_angle = int(input("Angle:"))
-
-            trans = glm.rotate(trans, glm.radians(transformation_angle), glm.vec3(0.0, 0.0, 1.0))
-        
-        elif transformation_code is 2:
-            print("Rotation! ")
-            transformation_angle = int(input("Angle:"))
-
-            trans = glm.rotate(trans, glm.radians(transformation_angle), glm.vec3(0.0, 1.0, 0.0))
-        
-        elif transformation_code is 3:
-            print("Rotation! ")
-            transformation_angle = int(input("Angle:"))
-
-            trans = glm.rotate(trans, glm.radians(transformation_angle), glm.vec3(1.0, 0.0, 0.0))
-
-        elif transformation_code is 4:
-            print("Translation! ")
-
-            d_x = float(input("dx:"))
-            d_y = float(input("dy:"))
-            d_z = float(input("dz:"))
-
-            trans = glm.translate(trans, glm.vec3(d_x, d_y, d_z))
-
-        elif transformation_code is 5:
-            print("Scale! ")
-
-            s_x = float(input("sx:"))
-            s_y = float(input("sy:"))
-            s_z = float(input("sz:"))
-
-
-            trans = glm.scale(trans, glm.vec3(s_x, s_y, s_z))
-        
-        i+=1
-
-    print("Matrix:" + str(trans))
+    # Scale for easier observation
+    trans = glm.scale(trans, glm.vec3(0.3, 0.3, 0.3))
 
     # Bind transformation matrix.
     transformLoc = glGetUniformLocation(program.program_id, "transform")
@@ -318,7 +225,7 @@ def Init():
     # Enable depth test
     glEnable(GL_DEPTH_TEST)
 
-
+# Function called on each display update call
 def Display():
     #Clear buffers for drawing.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
@@ -330,9 +237,9 @@ def Display():
     # Force display
     glutSwapBuffers()
 
-
 if __name__ == "__main__":
     glutInit(sys.argv)
+
     glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH)
     glutInitWindowSize(512, 512)
     glutInitContextVersion(3, 3)
@@ -342,5 +249,6 @@ if __name__ == "__main__":
     Init()
     glutKeyboardFunc(Keyboard)
     glutDisplayFunc(Display)
+    glutIdleFunc(Loop)
 
     glutMainLoop()
