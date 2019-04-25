@@ -73,101 +73,22 @@ def Init():
 
     map = Map()
 
-    result = map.get_map()
+    minimum, maximum, result = map.get_map()
 
+    print(minimum,maximum)
     vertices = list()
     colors = list()
     for i in range(len(result)):
         for j in range(len(result[i])):
-            vertices.extend([i, j, 0.0, 1.0])
+            vertices.extend([float(i), float(j), 0.0, 1.0])
             colors.extend([0.583, 0.771, 0.014, 1.0,])
 
-    print(vertices)
+    for i in range(0, len(vertices), 4):
+        print(vertices[i:i+4])
 
 
     vertices = np.array(vertices,dtype=np.float32)
     colors = np.array(colors,dtype=np.float32)
-
-    print(vertices)
-
-    '''vertices = np.array([
-        -0.5,-0.5,-0.5, 1.0,
-        -0.5,-0.5, 0.5, 1.0,
-        -0.5, 0.5, 0.5, 1.0,
-         0.5, 0.5,-0.5, 1.0,
-        -0.5,-0.5,-0.5, 1.0,
-        -0.5, 0.5,-0.5, 1.0,
-         0.5,-0.5, 0.5, 1.0,
-        -0.5,-0.5,-0.5, 1.0,
-         0.5,-0.5,-0.5, 1.0,
-         0.5, 0.5,-0.5, 1.0,
-         0.5,-0.5,-0.5, 1.0,
-        -0.5,-0.5,-0.5, 1.0,
-        -0.5,-0.5,-0.5, 1.0,
-        -0.5, 0.5, 0.5, 1.0,
-        -0.5, 0.5,-0.5, 1.0,
-         0.5,-0.5, 0.5, 1.0,
-        -0.5,-0.5, 0.5, 1.0,
-        -0.5,-0.5,-0.5, 1.0,
-        -0.5, 0.5, 0.5, 1.0,
-        -0.5,-0.5, 0.5, 1.0,
-         0.5,-0.5, 0.5, 1.0,
-         0.5, 0.5, 0.5, 1.0,
-         0.5,-0.5,-0.5, 1.0,
-         0.5, 0.5,-0.5, 1.0,
-         0.5,-0.5,-0.5, 1.0,
-         0.5, 0.5, 0.5, 1.0,
-         0.5,-0.5, 0.5, 1.0,
-         0.5, 0.5, 0.5, 1.0,
-         0.5, 0.5,-0.5, 1.0,
-        -0.5, 0.5,-0.5, 1.0,
-         0.5, 0.5, 0.5, 1.0,
-        -0.5, 0.5,-0.5, 1.0,
-        -0.5, 0.5, 0.5, 1.0,
-         0.5, 0.5, 0.5, 1.0,
-        -0.5, 0.5, 0.5, 1.0,
-         0.5,-0.5, 0.5, 1.0
-    ], dtype=np.float32)'''
-
-    '''colors = np.array([
-        0.583, 0.771, 0.014, 1.0,
-        0.609, 0.115, 0.436, 1.0,
-        0.327, 0.483, 0.844, 1.0,
-        0.822, 0.569, 0.201, 1.0,
-        0.435, 0.602, 0.223, 1.0,
-        0.310, 0.747, 0.185, 1.0,
-        0.597, 0.770, 0.761, 1.0,
-        0.559, 0.436, 0.730, 1.0,
-        0.359, 0.583, 0.152, 1.0,
-        0.483, 0.596, 0.789, 1.0,
-        0.559, 0.861, 0.639, 1.0,
-        0.195, 0.548, 0.859, 1.0,
-        0.014, 0.184, 0.576, 1.0,
-        0.771, 0.328, 0.970, 1.0,
-        0.406, 0.615, 0.116, 1.0,
-        0.676, 0.977, 0.133, 1.0,
-        0.971, 0.572, 0.833, 1.0,
-        0.140, 0.616, 0.489, 1.0,
-        0.997, 0.513, 0.064, 1.0,
-        0.945, 0.719, 0.592, 1.0,
-        0.543, 0.021, 0.978, 1.0,
-        0.279, 0.317, 0.505, 1.0,
-        0.167, 0.620, 0.077, 1.0,
-        0.347, 0.857, 0.137, 1.0,
-        0.055, 0.953, 0.042, 1.0,
-        0.714, 0.505, 0.345, 1.0,
-        0.783, 0.290, 0.734, 1.0,
-        0.722, 0.645, 0.174, 1.0,
-        0.302, 0.455, 0.848, 1.0,
-        0.225, 0.587, 0.040, 1.0,
-        0.517, 0.713, 0.338, 1.0,
-        0.053, 0.959, 0.120, 1.0,
-        0.393, 0.621, 0.362, 1.0,
-        0.673, 0.211, 0.457, 1.0,
-        0.820, 0.883, 0.371, 1.0,
-        0.982, 0.099, 0.879, 1.0
-    ], dtype=np.float32)'''
-
 
     # Create vertex buffer object (vbo)
     vbo = glGenBuffers(1)
@@ -192,51 +113,6 @@ def Init():
     # Compute a fix transformation matrix.
     trans = glm.mat4(1)
 
-    i = 0
-    while i < 2:
-        transformation_code = int(input("Next transformation:"))
-
-        if transformation_code is 1:
-            print("Rotation! ")
-            transformation_angle = int(input("Angle:"))
-
-            trans = glm.rotate(trans, glm.radians(transformation_angle), glm.vec3(0.0, 0.0, 1.0))
-        
-        elif transformation_code is 2:
-            print("Rotation! ")
-            transformation_angle = int(input("Angle:"))
-
-            trans = glm.rotate(trans, glm.radians(transformation_angle), glm.vec3(0.0, 1.0, 0.0))
-        
-        elif transformation_code is 3:
-            print("Rotation! ")
-            transformation_angle = int(input("Angle:"))
-
-            trans = glm.rotate(trans, glm.radians(transformation_angle), glm.vec3(1.0, 0.0, 0.0))
-
-        elif transformation_code is 4:
-            print("Translation! ")
-
-            d_x = float(input("dx:"))
-            d_y = float(input("dy:"))
-            d_z = float(input("dz:"))
-
-            trans = glm.translate(trans, glm.vec3(d_x, d_y, d_z))
-
-        elif transformation_code is 5:
-            print("Scale! ")
-
-            s_x = float(input("sx:"))
-            s_y = float(input("sy:"))
-            s_z = float(input("sz:"))
-
-
-            trans = glm.scale(trans, glm.vec3(s_x, s_y, s_z))
-        
-        i+=1
-
-    print("Matrix:" + str(trans))
-    
     # Bind transformation matrix.
     transformLoc = glGetUniformLocation(program.program_id, "transform")
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
@@ -260,7 +136,7 @@ def Display():
 if __name__ == "__main__":
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH)
-    glutInitWindowSize(512, 512)
+    glutInitWindowSize(800, 600)
     glutInitContextVersion(3, 3)
     glutInitContextProfile(GLUT_CORE_PROFILE)
     glutCreateWindow(bytes(sys.argv[0], 'utf-8'))
@@ -268,5 +144,6 @@ if __name__ == "__main__":
     Init()
     glutKeyboardFunc(Keyboard)
     glutDisplayFunc(Display)
+
 
     glutMainLoop()

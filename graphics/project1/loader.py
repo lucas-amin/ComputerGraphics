@@ -25,7 +25,7 @@ class Map():
 		# The numbers comes in format "12 13 14 ", so it is necessary to split the last space using [:-1]
 			image_map[i] = image_map[i][:-1].split(" ")
 
-		return image_map
+		return minimum, maximum, image_map
 
 
 if __name__ == "__main__":
