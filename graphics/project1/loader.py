@@ -1,14 +1,15 @@
 import sys, os
-from subprocess import check_output 
+from subprocess import check_output
 
 class Map():
-	application_directory = "../../2019cglib/applications/appImage"
-	image_dictionary = {"maxmin2": "../../2019cglib/applications/imagens/maxmin2.pgm"}
+	application_directory = "./appImage/appImage"
+	image_dictionary = {"maxmin2": "./appImage/imagens/maxmin2.pgm"}
 
 	def __init__(self):
 		a = 0
 
 	def get_map(self):
+
 		result = check_output([self.application_directory, self.image_dictionary["maxmin2"]])
 
 		# Decode binary into string
