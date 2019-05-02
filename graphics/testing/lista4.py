@@ -14,56 +14,116 @@ import time
 vertex_shader = open("simple3.vert").read()
 fragment_shader = open("simple3.frag").read()
 
-# Records the time of called loop for frame synchronization
-lastCall = 0
+counter = 0
 
-# Global transformation matrix   
-trans = 0
 
-# Initialization variables
-vao = program = 0
+class Walk():
+    def __init__(self):
+        # adjust accordingly
+        self.camera_speed = 0.001;
+
+        # Camera position
+        self.camera_pos = glm.vec3(0.0, 0.0, 3.0)
+
+        # Camera direction 
+        self.camera_target = glm.vec3(0.0, 0.0, 0.0)       
+        self.camera_direction = glm.normalize(self.camera_pos - self.camera_target)
+
+        # Right axis
+        up = glm.vec3(0.0, 1.0, 0.0)
+        self.camera_right = glm.normalize(glm.cross(up, self.camera_direction))
+
+        # Up axis
+        self.camera_up = glm.cross(self.camera_direction, self.camera_right)
+
+    def move_up(self):
+        self.camera_pos += self.camera_speed * self.camera_front;
+
+    def move_down(self):
+        self.camera_pos -= self.camera_speed * self.camera_front;
+
+    def move_left(self):
+        self.camera_pos -= self.get_normalization()
+
+    def move_right(self):
+        self.camera_pos += self.get_normalization()
+
+    def get_normalization(self):
+        return glm.normalize(glm.cross(self.camera_front, self.camera_up)) * self.camera_speed
+
+    def get_view(self):
+        return glm.lookAt(self.camera_pos, self.camera_pos + self.camera_front, self.camera_up)
+
+    def update(self, trans):
+        view = self.get_view()
+
+        trans = trans * view
+        print("trans:q", trans)
+
+        # Bind transformation matrix.
+        transformLoc = glGetUniformLocation(program.program_id, "transform")
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
+                
+        # Enable depth test
+        glEnable(GL_DEPTH_TEST)
+
+        Display()
+
 
 # The glm::LookAt function requires a position, target and up vector respectively. 
 # This creates a view matrix that is the same as the one used in the previous tutorial. 
-def look_at(time):
-    radius = 2.5e-4
-    time *= 3
+def look_at():
+    radius = 0.1
 
-    camX = math.sin(3 * time) * radius 
-    camY = math.sin(2 * time) * radius 
-    camZ = math.cos(time) * radius 
+    clock = time.time() 
+    camX = math.sin(clock) * radius 
+    camZ = math.cos(clock) * radius 
+    camY = math.sin(clock) * radius 
 
-    view = glm.lookAt(glm.vec3(camX, camY, camZ), glm.vec3(0.0, 0.0, 0.0), glm.vec3(0.0, 1.0, 0.0))
+    print(camX,camY,camZ)
+
+    view = glm.lookAt(glm.vec3(camX, camY, 0.0), glm.vec3(0.0, 0.0, 0.0), glm.vec3(0.0, 0.1, 0.0))
 
     return view
 
-# Loop used for automatic look at function calls
-def Loop():
-    global trans, lastCall
-    actual_time = time.time()
-    difference = actual_time - lastCall
+walker = Walk()
 
-    view = look_at(difference)
-    
-    trans = trans * view
 
-    # Bind transformation matrix.
-    transformLoc = glGetUniformLocation(program.program_id, "transform")
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
-
-    lastCall = time.time()
-    Display()
-    
-# Acts upon keyboard actions
 def Keyboard(key, x, y):
-    global trans, program, counter5
+    global trans, program, counter, walker
 
-    # Exits program
     if key is 27 or key is b'q' or key is b'Q':
         sys.exit(0)
     
-    # Perform manual transformations
+    if key is b'e':
+        view = look_at()
+        
+        trans = trans * view
+
+        print(trans)
+
+        # Bind transformation matrix.
+        transformLoc = glGetUniformLocation(program.program_id, "transform")
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
+
+        Display()
+
+    if key is b'w':
+        walker.move_up()
+
+    if key is b's':
+        walker.move_down()
+
+    if key is b'a':
+        walker.move_left()
+
+    if key is b'd':
+        walker.move_right()
+
+        walker.update(trans)
+
     if key is b't':
+        print("t!")
         transformation_code = int(input("Next transformation:"))
 
         if transformation_code is 1:
@@ -107,6 +167,11 @@ def Keyboard(key, x, y):
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(trans))
 
         Display()
+
+    
+trans = 0
+vao = program = 0
+
 
 def Init():
     global program, vao, trans
@@ -192,6 +257,7 @@ def Init():
         0.982, 0.099, 0.879, 1.0
     ], dtype=np.float32)
 
+
     # Create vertex buffer object (vbo)
     vbo = glGenBuffers(1)
     glBindBuffer(GL_ARRAY_BUFFER, vbo)
@@ -213,7 +279,9 @@ def Init():
     glUseProgram(program.program_id)
 
     # Compute a fix transformation matrix.
-    trans = glm.scale(trans, glm.vec3(0.3, 0.3, 0.3))
+    trans = glm.mat4(1)
+
+    print("Matrix:" + str(trans))
 
     # Bind transformation matrix.
     transformLoc = glGetUniformLocation(program.program_id, "transform")
@@ -222,7 +290,7 @@ def Init():
     # Enable depth test
     glEnable(GL_DEPTH_TEST)
 
-# Function called on each display update call
+
 def Display():
     #Clear buffers for drawing.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
@@ -234,9 +302,9 @@ def Display():
     # Force display
     glutSwapBuffers()
 
+
 if __name__ == "__main__":
     glutInit(sys.argv)
-
     glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH)
     glutInitWindowSize(512, 512)
     glutInitContextVersion(3, 3)
@@ -246,6 +314,5 @@ if __name__ == "__main__":
     Init()
     glutKeyboardFunc(Keyboard)
     glutDisplayFunc(Display)
-    glutIdleFunc(Loop)
 
     glutMainLoop()

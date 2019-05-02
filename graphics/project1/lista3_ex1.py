@@ -80,7 +80,7 @@ def Init():
     colors = list()
     for i in range(len(result)):
         for j in range(len(result[i])):
-            vertices.extend([float(i), float(j), 0.0, 1.0])
+            vertices.extend([float(i), float(j), 1.0, 1.0])
             colors.extend([0.583, 0.771, 0.014, 1.0,])
 
     for i in range(0, len(vertices), 4):

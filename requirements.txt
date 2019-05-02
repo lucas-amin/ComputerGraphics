@@ -1,0 +1,5 @@
+numpy
+cython
+cyglfw3
+pyopengl
+pyglm
