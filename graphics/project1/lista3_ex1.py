@@ -73,7 +73,7 @@ def Init():
 
     map = Map()
 
-    minimum, maximum, result = map.get_map()
+    minimum, maximum, result = map.get_map(use_script=False)
 
     print(minimum,maximum)
     vertices = list()
