@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-import numpy as np
-from OpenGL.arrays import ArrayDatatype
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 import glm
 import sys
 from ShaderProgram import ShaderProgram
-from loader import Map
 import time
 import math
 from Object import Object
@@ -92,6 +89,12 @@ class Operator:
         if key is b'l':
             loop = not loop
 
+        if key is b'v':
+            if self.visualization_mode is GL_LINES:
+                self.visualization_mode = GL_POINTS
+            else:
+                self.visualization_mode = GL_LINES
+
         if key is b't':
             mode = TRANSLATION_MODE
 
@@ -111,6 +114,8 @@ class Operator:
             elif mode is SCALE_MODE:
                 self.scale_object('INCREASE_Z')
 
+            print(self.matrix)
+
         if key is b'd':
             if mode is TRANSLATION_MODE:
                 self.translate_object('FAR')
@@ -120,6 +125,8 @@ class Operator:
 
             elif mode is SCALE_MODE:
                 self.scale_object('LOWER_Z')
+
+            print(self.matrix)
 
         transformLoc = glGetUniformLocation(self.program.program_id, "transform")
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(self.matrix))
@@ -216,12 +223,14 @@ class Operator:
     def Init(self):
         global program, vao
 
+        self.visualization_mode = GL_LINES
+
         vao = glGenVertexArrays(1)
         glBindVertexArray(vao)
         glClearColor(1, 1, 1, 1)
 
         self.object = Object()
-        colors, vertices = self.object.generate_object()
+        colors, vertices = self.object.generate_object(sys.argv[1])
 
         # Create vertex buffer object (vbo)
         vbo = glGenBuffers(1)
@@ -264,14 +273,20 @@ class Operator:
         glBindVertexArray(vao)
 
         # TODO GL_LINES or GL_TRIANGLES?
-        glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
+        if self.visualization_mode is GL_POINTS:
+            glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3)
+
+        elif self.visualization_mode is GL_LINES:
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
+
+        glPointSize(2)
 
         # Force display
         glutSwapBuffers()
 
+
     def catchKey(self, key, x, y):
         global loop
-        transformation_angle = 5
 
         if key == GLUT_KEY_LEFT:
             if mode is TRANSLATION_MODE:

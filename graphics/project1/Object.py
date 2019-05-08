@@ -15,9 +15,9 @@ class Object:
         self.vertices = list()
         self.colors = list()
 
-    def generate_object(self):
+    def generate_object(self, image_name):
         map = Map()
-        self.minimum_value, self.maximum_value, self.map_matrix = map.get_map(use_script=False, image="crater2")
+        self.minimum_value, self.maximum_value, self.map_matrix = map.get_map(use_script=False, image=image_name)
 
         self.width = len(self.map_matrix)
         self.height = len(self.map_matrix[0])
