@@ -1,9 +1,5 @@
-import sys
-
 import numpy as np
-from ShaderProgram import ShaderProgram
 from loader import Map
-import time
 import math
 
 

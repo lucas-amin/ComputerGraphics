@@ -3,12 +3,12 @@ import cv2
 
 class Map():
     application_directory = "./appImage/appImage"
-    image_dictionary = {"maxmin2": "./appimage/imagens/maxmin2.pgm",
-    					"maxmin": "./appimage/imagens/maxmin.pgm",
-    					"crater": "./appimage/imagens/crater.pgm",
-    					"crater2": "./appimage/imagens/crater2.pgm",
-    					"crater3": "./appimage/imagens/crater3.pgm",
-    					"crater4": "./appimage/imagens/crater4.pgm"}
+    image_dictionary = {"maxmin2": "./imagens/maxmin2.pgm",
+    					"maxmin": "./aimagens/maxmin.pgm",
+    					"crater": "./aimagens/crater.pgm",
+    					"crater2": "./imagens/crater2.pgm",
+    					"crater3": "./imagens/crater3.pgm",
+    					"crater4": "./imagens/crater4.pgm"}
 
     def __init__(self):
         a = 0

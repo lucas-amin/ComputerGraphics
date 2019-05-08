@@ -9,8 +9,8 @@ import math
 from Object import Object
 
 # Globals
-vertex_shader = open("simple3.vert").read()
-fragment_shader = open("simple3.frag").read()
+vertex_shader = open("./simple3.vert").read()
+fragment_shader = open("./simple3.frag").read()
 
 # Loop variable
 loop = False
@@ -218,8 +218,6 @@ class Operator:
 
         self.object.move(translator)
 
-        print(self.object.width, self.object.height, self.object.depth)
-
     def Init(self):
         global program, vao
 
@@ -283,7 +281,6 @@ class Operator:
 
         # Force display
         glutSwapBuffers()
-
 
     def catchKey(self, key, x, y):
         global loop
