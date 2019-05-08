@@ -2,13 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba7cc7fe-4e6f-449d-b8d8-61dfdd6b53b7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/ComputerGraphics.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ComputerGraphics.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graphics/project1/Object.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/Object.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/lista3_ex1.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/appColoredCube.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/appColoredTriangle.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/appImage" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/appImage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/appPoints.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/appTriangles.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/appWindow.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/imagens/crater.pgm" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/imagens/crater.pgm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/imagens/crater2.pgm" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/imagens/crater2.pgm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/imagens/crater3.pgm" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/imagens/crater3.pgm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/imagens/crater4.pgm" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/imagens/crater4.pgm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/imagens/maxmin.pgm" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/imagens/maxmin.pgm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/imagens/maxmin2.pgm" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/imagens/maxmin2.pgm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/shader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/shader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/simple.frag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/simple.vert" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/simple2.frag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/simple2.vert" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/simple3.frag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/appimage/simple3.vert" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/apppoints.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/graphics/project1/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/terreno.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/terreno.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,62 +40,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graphics/project1/main.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graphics/project1/terreno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="221" lean-forward="true" selection-start-line="221" selection-end-line="221" />
+            <state relative-caret-position="253">
+              <caret line="236" column="43" selection-start-line="236" selection-start-column="43" selection-end-line="236" selection-end-column="43" />
               <folding>
-                <element signature="e#23#41#0" expanded="true" />
+                <element signature="e#23#46#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Object.py" pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="24" column="64" lean-forward="true" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
+            <state relative-caret-position="225">
+              <caret line="15" column="75" lean-forward="true" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crater.pgm" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/crater.pgm">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="crater2.pgm" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/crater2.pgm">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="crater3.pgm" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/crater3.pgm">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="crater4.pgm" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/crater4.pgm">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="loader.py" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/graphics/project1/loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+            <state relative-caret-position="75">
+              <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="maxmin2.pgm" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/maxmin2.pgm">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -93,6 +92,9 @@
       <find>scale_factorq</find>
       <find>scale_object</find>
       <find>print</find>
+      <find>glEnd</find>
+      <find>print(self.</find>
+      <find>print(</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -104,9 +106,14 @@
         <option value="$PROJECT_DIR$/graphics/lista5/lista5.3.py" />
         <option value="$PROJECT_DIR$/graphics/project1/object.py" />
         <option value="$PROJECT_DIR$/graphics/project1/lista3_ex1.py" />
-        <option value="$PROJECT_DIR$/graphics/project1/loader.py" />
         <option value="$PROJECT_DIR$/graphics/project1/main.py" />
         <option value="$PROJECT_DIR$/graphics/project1/Object.py" />
+        <option value="$PROJECT_DIR$/graphics/project1/1717510/apppoints.py" />
+        <option value="$PROJECT_DIR$/graphics/project1/1717510/Object.py" />
+        <option value="$PROJECT_DIR$/graphics/project1/1717510/loader.py" />
+        <option value="$PROJECT_DIR$/graphics/project1/1717510/terreno.py" />
+        <option value="$PROJECT_DIR$/graphics/project1/terreno.py" />
+        <option value="$PROJECT_DIR$/graphics/project1/loader.py" />
       </list>
     </option>
   </component>
@@ -151,14 +158,13 @@
               <item name="ComputerGraphics" type="462c0819:PsiDirectoryNode" />
               <item name="graphics" type="462c0819:PsiDirectoryNode" />
               <item name="project1" type="462c0819:PsiDirectoryNode" />
-              <item name="appimage" type="462c0819:PsiDirectoryNode" />
+              <item name="1717510" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ComputerGraphics" type="b2602c69:ProjectViewProjectNode" />
               <item name="ComputerGraphics" type="462c0819:PsiDirectoryNode" />
               <item name="graphics" type="462c0819:PsiDirectoryNode" />
               <item name="project1" type="462c0819:PsiDirectoryNode" />
-              <item name="appimage" type="462c0819:PsiDirectoryNode" />
               <item name="imagens" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -170,7 +176,13 @@
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/lucas/PycharmProjects/ComputerGraphicsgit/ComputerGraphics/graphics/project1/main.py" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/graphics/project1" />
+      <recent name="$PROJECT_DIR$/graphics/project1/1717510" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -202,6 +214,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ComputerGraphics" />
@@ -215,11 +230,14 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graphics/project1/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graphics/project1/terreno.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.lista3_ex1" />
@@ -246,30 +264,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="754" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15294118" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15283842" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286385" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.292581" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38244513" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29264477" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3834116" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -280,12 +295,12 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/graphics/project1/main.py</url>
-          <line>201</line>
+          <url>file://$PROJECT_DIR$/graphics/project1/terreno.py</url>
+          <line>207</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/graphics/project1/main.py</url>
+          <url>file://$PROJECT_DIR$/graphics/project1/terreno.py</url>
           <line>70</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
@@ -299,52 +314,42 @@
           <line>85</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graphics/project1/Object.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graphics/project1/terreno.py</url>
+          <line>236</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="17" />
     </breakpoint-manager>
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>len(sys.argv)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sys.argv</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sys</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/graphics/project1/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
-          <folding>
-            <element signature="e#23#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/GLUT/special.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/arrays/lists.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="170" selection-start-line="170" selection-end-line="170" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/raw/GLUT/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="548" selection-start-line="548" selection-end-line="548" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/GLUT/special.py" />
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/arrays/lists.py" />
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/raw/GLUT/__init__.py" />
     <entry file="file://$PROJECT_DIR$/graphics/lista5/lista5.3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -355,69 +360,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/error.py">
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/error.py" />
+    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/platform/baseplatform.py" />
+    <entry file="file://$PROJECT_DIR$/graphics/project1/imagens/maxmin.pgm">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/995868041/numpy/core/_multiarray_umath.py" />
+    <entry file="file://$PROJECT_DIR$/graphics/project1/imagens/crater.pgm">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/project1/imagens/crater2.pgm">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/project1/imagens/crater4.pgm">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/OpenGL/raw/GL/VERSION/GL_1_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="231" selection-start-line="231" selection-end-line="231" />
+        <state relative-caret-position="216">
+          <caret line="368" selection-start-line="368" selection-end-line="368" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/platform/baseplatform.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="401" selection-start-line="401" selection-end-line="401" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/maxmin2.pgm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/maxmin.pgm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/995868041/numpy/core/_multiarray_umath.py">
+    <entry file="file://$PROJECT_DIR$/graphics/project1/1717510/apppoints.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+          <folding>
+            <element signature="e#13#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/project1/simple3.vert">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/project1/imagens/crater3.pgm">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/project1/imagens/maxmin2.pgm">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/project1/terreno.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="236" column="43" selection-start-line="236" selection-start-column="43" selection-end-line="236" selection-end-column="43" />
+          <folding>
+            <element signature="e#23#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/lista5/loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="75" lean-forward="true" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/graphics/project1/loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="221" lean-forward="true" selection-start-line="221" selection-end-line="221" />
-          <folding>
-            <element signature="e#23#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/crater.pgm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/crater2.pgm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/crater3.pgm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/appimage/imagens/crater4.pgm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="24" column="64" lean-forward="true" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
         </state>
       </provider>
     </entry>

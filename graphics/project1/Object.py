@@ -36,6 +36,7 @@ class Object:
         return self.colors, self.vertices
 
     def move(self, translation_vector):
+        print(translation_vector)
         self.object_center_x += translation_vector[0]
         self.object_center_y += translation_vector[1]
         self.object_center_z += translation_vector[2]

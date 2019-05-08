@@ -228,7 +228,13 @@ class Operator:
         glClearColor(1, 1, 1, 1)
 
         self.object = Object()
-        colors, vertices = self.object.generate_object(sys.argv[1])
+
+        if len(sys.argv) > 1:
+            image_name = sys.argv[1]
+        else:
+            image_name = "crater"
+
+        colors, vertices = self.object.generate_object(image_name)
 
         # Create vertex buffer object (vbo)
         vbo = glGenBuffers(1)

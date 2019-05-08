@@ -4,8 +4,8 @@ import cv2
 class Map():
     application_directory = "./appImage/appImage"
     image_dictionary = {"maxmin2": "./imagens/maxmin2.pgm",
-    					"maxmin": "./aimagens/maxmin.pgm",
-    					"crater": "./aimagens/crater.pgm",
+    					"maxmin": "./imagens/maxmin.pgm",
+    					"crater": "./imagens/crater.pgm",
     					"crater2": "./imagens/crater2.pgm",
     					"crater3": "./imagens/crater3.pgm",
     					"crater4": "./imagens/crater4.pgm"}
