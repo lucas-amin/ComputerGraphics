@@ -30,9 +30,6 @@ vao = program = 0
 
 class Operator:
 
-    def __init__(self):
-        pass
-
     # The glm::LookAt function requires a position, target and up vector respectively.
     # This creates a view matrix that is the same as the one used in the previous tutorial.
     def look_at(self, time):
@@ -130,7 +127,7 @@ class Operator:
         glutPostRedisplay()
 
     def rotate_object(self, direction):
-        transformation_angle = 5.0
+        transformation_angle = 3.0
 
         translation_factor_x = self.object.object_center_x
         translation_factor_y = self.object.object_center_y
@@ -189,11 +186,10 @@ class Operator:
         self.matrix = glm.scale(self.matrix, glm.vec3(scaler))
 
         self.matrix = glm.translate(self.matrix,
-                                    glm.vec3([(-1) * translation_factor_x, (-1) * translation_factor_y, (-1) * translation_factor_z]))
+                                    glm.vec3([(-1) * translation_factor_x, (-1) * translation_factor_y,
+                                              (-1) * translation_factor_z]))
 
     def translate_object(self, direction):
-        print(direction)
-
         translation_factor = 25
 
         if direction is 'FAR':
@@ -222,6 +218,7 @@ class Operator:
 
         vao = glGenVertexArrays(1)
         glBindVertexArray(vao)
+        glClearColor(1, 1, 1, 1)
 
         self.object = Object()
         colors, vertices = self.object.generate_object()
@@ -250,13 +247,6 @@ class Operator:
         self.matrix = glm.mat4(1)
 
         # Scale for easier observation
-
-        d_x = 0
-        d_y = 0
-        d_z = 0
-
-        self.matrix = glm.translate(self.matrix, glm.vec3(d_x, d_y, d_z))
-
         self.global_scale()
 
         # Bind transformation matrix.
@@ -273,7 +263,8 @@ class Operator:
         # Draw.
         glBindVertexArray(vao)
 
-        glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3);
+        # TODO GL_LINES or GL_TRIANGLES?
+        glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
 
         # Force display
         glutSwapBuffers()
@@ -287,7 +278,7 @@ class Operator:
                 self.translate_object('LEFT')
 
             elif mode is ROTATION_MODE:
-                self.rotate_object('LOWER_Y')
+                self.rotate_object('LOWER_X')
 
             elif mode is SCALE_MODE:
                 self.scale_object('LOWER_X')

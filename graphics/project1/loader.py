@@ -13,7 +13,7 @@ class Map():
     def __init__(self):
         a = 0
 
-    def get_map(self, use_script=True, image="maxmin2"):
+    def get_map(self, use_script=True, image="crater2"):
         if use_script:
             return self.extract_image_C(image)
         else:
@@ -37,6 +37,7 @@ class Map():
 
     def extract_image_C(self, image_name):
         result = check_output([self.application_directory, self.image_dictionary[image_name]])
+
         # Decode binary into string
         str_result = result.decode()[:-1]
         # Split string into list
