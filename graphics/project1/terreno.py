@@ -210,9 +210,9 @@ class Operator:
             translator = [0.0, (-1) * self.object.height / translation_factor, 0.0]
 
         elif direction is 'LEFT':
-            translator = [(-1) * self.object.width / translation_factor, 0.0, 0.0, ]
+            translator = [(-1) * self.object.width / translation_factor, 0.0, 0.0]
         elif direction is 'RIGHT':
-            translator = [self.object.width / translation_factor, 0.0, 0.0, ]
+            translator = [self.object.width / translation_factor, 0.0, 0.0]
 
         self.matrix = glm.translate(self.matrix, glm.vec3(translator))
 
