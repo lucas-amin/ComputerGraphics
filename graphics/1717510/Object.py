@@ -97,24 +97,4 @@ class Object:
         self.colors.extend(self.color1)
         self.colors.extend(self.color1)
         self.colors.extend(self.color1)
-
-    def add_triangles(self, x_coordinate, y_coordinate, z_coordinate):
-        # Add triangle 1
-        self.vertices.extend([float(x_coordinate), float(y_coordinate), z_coordinate, 1.0])
-        self.vertices.extend([float(x_coordinate + 1.0), float(y_coordinate), z_coordinate, 1.0])
-
-        self.vertices.extend([float(x_coordinate), float(y_coordinate + 1.0), z_coordinate, 1.0])
-
         self.colors.extend(self.color1)
-        self.colors.extend(self.color1)
-        self.colors.extend(self.color1)
-
-        # Add triangle 2
-        self.vertices.extend([float(x_coordinate + 1.0), float(y_coordinate), z_coordinate, 1.0])
-
-        self.vertices.extend([float(x_coordinate + 1.0), float(y_coordinate + 1.0), z_coordinate, 1.0])
-        self.vertices.extend([float(x_coordinate), float(y_coordinate + 1.0), z_coordinate, 1.0])
-
-        self.colors.extend(self.color2)
-        self.colors.extend(self.color2)
-        self.colors.extend(self.color2)

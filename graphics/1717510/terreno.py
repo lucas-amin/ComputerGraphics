@@ -276,7 +276,6 @@ class Operator:
         # Draw.
         glBindVertexArray(vao)
 
-        # TODO GL_LINES or GL_TRIANGLES?
         if self.visualization_mode is GL_POINTS:
             glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3)
 

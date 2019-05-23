@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba7cc7fe-4e6f-449d-b8d8-61dfdd6b53b7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ComputerGraphics.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ComputerGraphics.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/terreno.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/project1/terreno.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/lista6/lista6.3.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/lista6/lista6.3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/Object.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/ShaderProgram.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/freeglut.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/crater.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/crater2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/crater3.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/crater4.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/maxmin.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/maxmin2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/load_pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/simple.frag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/simple.vert" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/simple3.frag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/simple3.vert" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/project1/terreno.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,35 +30,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="terreno.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/graphics/project1/terreno.py">
+      <file leaf-file-name="lista6.3.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/graphics/lista6/lista6.3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="170" column="37" lean-forward="true" selection-start-line="170" selection-start-column="37" selection-end-line="170" selection-end-column="37" />
+            <state relative-caret-position="289">
+              <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
               <folding>
-                <element signature="e#23#46#0" expanded="true" />
+                <element signature="e#23#41#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Object.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loader.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graphics/project1/loader.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-275">
-              <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -72,7 +65,14 @@
       <find>print(self.</find>
       <find>print(</find>
       <find>global_scale</find>
+      <find>clfgw</find>
+      <find>cyg</find>
+      <find>display</find>
+      <find>vao</find>
     </findStrings>
+    <dirStrings>
+      <dir>C:\Users\lucas\PycharmProjects\ComputerGraphicsgit\ComputerGraphics\graphics\1717510</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,14 +89,17 @@
         <option value="$PROJECT_DIR$/graphics/project1/1717510/loader.py" />
         <option value="$PROJECT_DIR$/graphics/project1/1717510/terreno.py" />
         <option value="$PROJECT_DIR$/graphics/project1/loader.py" />
-        <option value="$PROJECT_DIR$/graphics/project1/Object.py" />
         <option value="$PROJECT_DIR$/graphics/project1/terreno.py" />
+        <option value="$PROJECT_DIR$/graphics/project1/Object.py" />
+        <option value="$PROJECT_DIR$/graphics/1717510/Object.py" />
+        <option value="$PROJECT_DIR$/graphics/1717510/terreno.py" />
+        <option value="$PROJECT_DIR$/graphics/lista6/lista6.3.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="22" />
+    <option name="y" value="72" />
     <option name="width" value="1376" />
     <option name="height" value="754" />
   </component>
@@ -105,7 +108,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -122,30 +124,24 @@
               <item name="ComputerGraphics" type="b2602c69:ProjectViewProjectNode" />
               <item name="ComputerGraphics" type="462c0819:PsiDirectoryNode" />
               <item name="graphics" type="462c0819:PsiDirectoryNode" />
-              <item name="lista5" type="462c0819:PsiDirectoryNode" />
+              <item name="lista6" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ComputerGraphics" type="b2602c69:ProjectViewProjectNode" />
               <item name="ComputerGraphics" type="462c0819:PsiDirectoryNode" />
               <item name="graphics" type="462c0819:PsiDirectoryNode" />
-              <item name="project1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ComputerGraphics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ComputerGraphics" type="462c0819:PsiDirectoryNode" />
-              <item name="graphics" type="462c0819:PsiDirectoryNode" />
-              <item name="project1" type="462c0819:PsiDirectoryNode" />
-              <item name="imagens" type="462c0819:PsiDirectoryNode" />
+              <item name="testing" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/lucas/PycharmProjects/ComputerGraphicsgit/ComputerGraphics/graphics/project1/main.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../hand3d" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -166,7 +162,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.lista6.3">
     <configuration name="lista3_ex1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ComputerGraphics" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,6 +176,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="C:\Users\lucas\PycharmProjects\ComputerGraphicsgit\ComputerGraphics\graphics\project1\main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="lista6.3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ComputerGraphics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/graphics/lista6" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graphics/lista6/lista6.3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -203,12 +217,34 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="terreno" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ComputerGraphics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/graphics/1717510" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graphics/1717510/terreno.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <list>
       <item itemvalue="Python.lista3_ex1" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.terreno" />
+      <item itemvalue="Python.lista6.3" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lista6.3" />
+        <item itemvalue="Python.terreno" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.lista3_ex1" />
       </list>
@@ -228,18 +264,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1376" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15220588" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22222222" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32735425" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21973094" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.34898278" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41554558" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -247,7 +284,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286385" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -262,17 +298,22 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/graphics/project1/terreno.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/graphics/1717510/terreno.py</url>
+          <line>174</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/graphics/project1/terreno.py</url>
-          <line>170</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/graphics/1717510/terreno.py</url>
+          <line>142</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graphics/1717510/terreno.py</url>
+          <line>192</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -293,35 +334,52 @@
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>self.matrix</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/graphics/project1/terreno.py">
+    <entry file="file://$PROJECT_DIR$/graphics/1717510/Object.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4012">
-          <caret line="236" column="43" selection-start-line="236" selection-start-column="43" selection-end-line="236" selection-end-column="43" />
-          <folding>
-            <element signature="e#23#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        <state relative-caret-position="765">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/loader.py">
+    <entry file="file://$PROJECT_DIR$/graphics/1717510/terreno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+        <state relative-caret-position="4607">
+          <caret line="278" selection-start-line="278" selection-end-line="278" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/1717510/Object.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/1717510/terreno.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4726">
+          <caret line="278" selection-start-line="278" selection-end-line="278" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/project1/terreno.py" />
+    <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py" />
+    <entry file="file://$PROJECT_DIR$/graphics/project1/loader.py" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/GLUT/special.py" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/arrays/lists.py" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/raw/GLUT/__init__.py" />
@@ -344,29 +402,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/loader.py">
+    <entry file="file://$PROJECT_DIR$/graphics/project1/loader.py" />
+    <entry file="file://$PROJECT_DIR$/graphics/project1/terreno.py" />
+    <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py" />
+    <entry file="file://$PROJECT_DIR$/graphics/1717510/Object.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-275">
-          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        <state relative-caret-position="765">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/terreno.py">
+    <entry file="file://$PROJECT_DIR$/graphics/1717510/terreno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="170" column="37" lean-forward="true" selection-start-line="170" selection-start-column="37" selection-end-line="170" selection-end-column="37" />
+        <state relative-caret-position="527">
+          <caret line="279" column="37" lean-forward="true" selection-start-line="279" selection-start-column="37" selection-end-line="279" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/lista6/lista6.3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
           <folding>
-            <element signature="e#23#46#0" expanded="true" />
+            <element signature="e#23#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
