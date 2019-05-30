@@ -30,6 +30,9 @@ ORTHO_TRANSFORMATION = 0
 FRUSTUM_TRANSFORMATION = 1
 PERSPECTIVE_TRANSFORMATION = 2
 
+# Light attributes
+lightPos = glm.vec3(1.2, 1.0, 2.0);
+
 class Operator:
     transformation_mode = ORTHO_TRANSFORMATION
 
@@ -307,6 +310,10 @@ class Operator:
         vao = glGenVertexArrays(1)
         glBindVertexArray(vao)
 
+        # Load and compile shaders.
+        self.program = ShaderProgram(vertex_shader, fragment_shader)
+        glUseProgram(self.program.program_id)
+
         self.vertices = np.array([
             -0.5, -0.5, -0.5, 1.0,
             -0.5, -0.5, 0.5, 1.0,
@@ -408,17 +415,18 @@ class Operator:
         glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(1)
 
-        # Load and compile shaders.
-        self.program = ShaderProgram(vertex_shader, fragment_shader)
-        glUseProgram(self.program.program_id)
+        #Lightning
+        objectColorLoc = glGetUniformLocation(self.program.program_id, "objectColor" );
+        lightColorLoc  = glGetUniformLocation(self.program.program_id, "lightColor" );
+        glUniform3f( objectColorLoc, 1.0, 0.5, 0.31 );
+        glUniform3f( lightColorLoc, 1.0, 0.5, 1.0);
 
         # Compute a fix transformation matrix.
         self.matrix = glm.mat4(1)
         self.set_perspective()
 
-        scale = 0.3
-
         # Scale for easier observation
+        scale = 0.3
         self.matrix = glm.scale(self.matrix, glm.vec3(scale, scale, scale))
 
         # Bind transformation matrix.
@@ -427,6 +435,8 @@ class Operator:
 
         # Enable depth test
         glEnable(GL_DEPTH_TEST)
+        # glEnable(GL_LIGHTING)
+        # glEnable(GL_LIGHT1)
 
         self.ambient_lightning()
 
