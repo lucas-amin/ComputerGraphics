@@ -24,8 +24,30 @@ ROTATION_MODE = 1
 SCALE_MODE = 2
 vao = program = 0
 
+ORTHO_TRANSFORMATION = 0
+FRUSTUM_TRANSFORMATION = 1
+PERSPECTIVE_TRANSFORMATION = 2
+
+# Light attributes
+lightPos = glm.vec3(1.2, 1.0, 2.0);
 
 class Operator:
+    transformation_mode = ORTHO_TRANSFORMATION
+
+    def set_perspective(self):
+        view_origin = glm.vec3(0, 0, 1)
+        self.view_matrix = glm.lookAt(view_origin, glm.vec3(0, 0, 0), glm.vec3(0, 1, 0))
+
+        if self.transformation_mode % 3 is ORTHO_TRANSFORMATION:
+            self.perspective_matrix = glm.ortho(-1, 1, -1, 1, 0.5, 100)
+
+        elif self.transformation_mode % 3 is FRUSTUM_TRANSFORMATION:
+            self.perspective_matrix = glm.frustum(-1, 1, -1, 1, 0.5, 100.0)
+
+        elif self.transformation_mode % 3 is PERSPECTIVE_TRANSFORMATION:
+            self.perspective_matrix = glm.perspective(glm.radians(90), 1, 0.5, 100.0)
+
+        self.transformation_mode += 1
 
     # The glm::LookAt function requires a position, target and up vector respectively.
     # This creates a view matrix that is the same as the one used in the previous tutorial.
@@ -94,6 +116,9 @@ class Operator:
                 self.visualization_mode = GL_POINTS
             else:
                 self.visualization_mode = GL_LINES
+
+        if key is b'c':
+            self.set_perspective()
 
         if key is b't':
             mode = TRANSLATION_MODE
@@ -172,8 +197,7 @@ class Operator:
         translation_factor_y = self.object.object_center_y
         translation_factor_z = self.object.object_center_z
 
-        self.matrix = glm.translate(self.matrix,
-                                    glm.vec3([translation_factor_x, translation_factor_y, translation_factor_z]))
+        self.matrix = glm.translate(self.matrix, glm.vec3([translation_factor_x, translation_factor_y, translation_factor_z]))
 
         if direction is 'LOWER_X':
             scaler = [1.0 / scaling_factor, 1.0, 1.0]
@@ -258,6 +282,7 @@ class Operator:
 
         # Compute a fix transformation matrix.
         self.matrix = glm.mat4(1)
+        self.set_perspective()
 
         # Scale for easier observation
         self.global_scale()
@@ -272,6 +297,10 @@ class Operator:
     def Display(self):
         # Clear buffers for drawing.
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+
+        transform = self.perspective_matrix * self.view_matrix * self.matrix
+        transformLoc = glGetUniformLocation(self.program.program_id, "transform")
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(transform))
 
         # Draw.
         glBindVertexArray(vao)
