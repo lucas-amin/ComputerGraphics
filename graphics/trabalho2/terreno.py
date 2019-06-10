@@ -272,7 +272,7 @@ class Operator:
         cbo = glGenBuffers(1)
         glBindBuffer(GL_ARRAY_BUFFER, cbo)
         glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(colors), colors, GL_STATIC_DRAW)
-        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, None)
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(1)
 
         # Load and compile shaders.

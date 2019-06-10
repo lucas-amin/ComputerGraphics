@@ -77,29 +77,27 @@ class Object:
             self.colors.extend(self.get_color(float(self.width - 1.0), float(j), z_coordinate))
 
             self.vertices.extend([float(self.width - 1.0), float(j + 1.0), z_neighbor, 1.0])
-            self.colors.extend(self.get_color(float(i - 1.0), float(j + 1.0), z_coordinate))
+            self.colors.extend(self.get_color(float(self.width - 1.0), float(j + 1.0), z_coordinate))
 
     def normalize(self, value):
         return value
 
     def add_lines(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
-        main_color = self.get_color(x_coordinate, y_coordinate, z_coordinate)  # [0.7, 0.4, 0.2, 1.0]
+        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
 
-        self.vertices.extend([float(x_coordinate), float(y_coordinate), z_coordinate, 1.0])
-        self.vertices.extend([float(x_coordinate + 1.0), float(y_coordinate), neighbor1, 1.0])
+        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
 
-        self.colors.extend(main_color)
-        self.colors.extend(self.get_color(x_coordinate, y_coordinate, neighbor1))
+        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
 
-        self.vertices.extend([float(x_coordinate), float(y_coordinate), z_coordinate, 1.0])
-        self.vertices.extend([float(x_coordinate), float(y_coordinate + 1.0), neighbor2, 1.0])
-        self.colors.extend(main_color)
-        self.colors.extend(self.get_color(x_coordinate, y_coordinate, neighbor2))
+        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
 
-        self.vertices.extend([float(x_coordinate), float(y_coordinate), z_coordinate, 1.0])
-        self.vertices.extend([float(x_coordinate + 1.0), float(y_coordinate + 1.0), neighbor3, 1.0])
-        self.colors.extend(main_color)
-        self.colors.extend(self.get_color(x_coordinate, y_coordinate, neighbor3))
+        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
+
+        self.add_attribute(x_coordinate, y_coordinate, neighbor3)
+
+    def add_attribute(self, x_coordinate, y_coordinate, z_coordinate):
+        self.vertices.extend([float(x_coordinate + 1.0), float(y_coordinate + 1.0), z_coordinate, 1.0])
+        self.colors.extend(self.get_color(x_coordinate, y_coordinate, z_coordinate))
 
     def get_color(self, x_coordinate, y_coordinate, z_coordinate):
-        return [x_coordinate / self.width, y_coordinate / self.height, z_coordinate / self.depth, 1.0]
+        return [x_coordinate / self.width, y_coordinate / self.height, z_coordinate / self.depth]
