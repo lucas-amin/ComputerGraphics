@@ -11,19 +11,13 @@ class Object:
         self.vertices = list()
         self.colors = list()
 
-    def generate_object(self, image_name):
+    def load_object(self, image_name):
         map = Map()
         self.minimum_value, self.maximum_value, self.map_matrix = map.get_map(use_script=False, image=image_name)
 
         self.width = len(self.map_matrix)
         self.height = len(self.map_matrix[0])
-
-        diagonal = math.sqrt(self.width ** 2 + self.height ** 2)
-
-        if self.maximum_value > diagonal:
-            self.depth = self.maximum_value
-        else:
-            self.depth = diagonal
+        self.depth = np.max(self.map_matrix)
 
         self.vertex_count = self.width * self.height * 6
 
@@ -70,31 +64,42 @@ class Object:
             z_neighbor = self.normalize(self.map_matrix[i + 1][self.height - 1])
 
             self.vertices.extend([float(i), float(self.height - 1), z_coordinate, 1.0])
+            self.colors.extend(self.get_color(float(i), float(self.height - 1), z_coordinate))
+
             self.vertices.extend([float(i + 1.0), float(self.height - 1), z_neighbor, 1.0])
+            self.colors.extend(self.get_color(float(i + 1.0), float(self.height - 1), z_coordinate))
 
         for j in range(self.height - 1):
             z_coordinate = self.normalize(self.map_matrix[self.width - 1][j])
             z_neighbor = self.normalize(self.map_matrix[self.width - 1][j + 1])
 
-            self.vertices.extend([float(self.width - 1), float(j), z_coordinate, 1.0])
-            self.vertices.extend([float(self.width - 1), float(j + 1.0), z_neighbor, 1.0])
+            self.vertices.extend([float(self.width - 1.0), float(j), z_coordinate, 1.0])
+            self.colors.extend(self.get_color(float(self.width - 1.0), float(j), z_coordinate))
+
+            self.vertices.extend([float(self.width - 1.0), float(j + 1.0), z_neighbor, 1.0])
+            self.colors.extend(self.get_color(float(i - 1.0), float(j + 1.0), z_coordinate))
 
     def normalize(self, value):
         return value
 
     def add_lines(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
+        main_color = self.get_color(x_coordinate, y_coordinate, z_coordinate)  # [0.7, 0.4, 0.2, 1.0]
+
         self.vertices.extend([float(x_coordinate), float(y_coordinate), z_coordinate, 1.0])
         self.vertices.extend([float(x_coordinate + 1.0), float(y_coordinate), neighbor1, 1.0])
 
+        self.colors.extend(main_color)
+        self.colors.extend(self.get_color(x_coordinate, y_coordinate, neighbor1))
+
         self.vertices.extend([float(x_coordinate), float(y_coordinate), z_coordinate, 1.0])
         self.vertices.extend([float(x_coordinate), float(y_coordinate + 1.0), neighbor2, 1.0])
+        self.colors.extend(main_color)
+        self.colors.extend(self.get_color(x_coordinate, y_coordinate, neighbor2))
 
         self.vertices.extend([float(x_coordinate), float(y_coordinate), z_coordinate, 1.0])
         self.vertices.extend([float(x_coordinate + 1.0), float(y_coordinate + 1.0), neighbor3, 1.0])
+        self.colors.extend(main_color)
+        self.colors.extend(self.get_color(x_coordinate, y_coordinate, neighbor3))
 
-        self.colors.extend(self.color1)
-        self.colors.extend(self.color1)
-        self.colors.extend(self.color1)
-        self.colors.extend(self.color1)
-        self.colors.extend(self.color1)
-        self.colors.extend(self.color1)
+    def get_color(self, x_coordinate, y_coordinate, z_coordinate):
+        return [x_coordinate / self.width, y_coordinate / self.height, z_coordinate / self.depth, 1.0]

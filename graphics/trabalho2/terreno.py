@@ -249,16 +249,15 @@ class Operator:
 
         vao = glGenVertexArrays(1)
         glBindVertexArray(vao)
-        glClearColor(1, 1, 1, 1)
 
         self.object = Object()
 
         if len(sys.argv) > 1:
             image_name = sys.argv[1]
         else:
-            image_name = "crater"
+            image_name = "crater3"
 
-        colors, vertices = self.object.generate_object(image_name)
+        colors, vertices = self.object.load_object(image_name)
 
         # Create vertex buffer object (vbo)
         vbo = glGenBuffers(1)
@@ -293,6 +292,9 @@ class Operator:
 
         # Enable depth test
         glEnable(GL_DEPTH_TEST)
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
+        glPointSize(1.4)
+        glClearColor(0.1, 0.1, 0.1, 0.1)
 
     def Display(self):
         # Clear buffers for drawing.
@@ -310,8 +312,6 @@ class Operator:
 
         elif self.visualization_mode is GL_LINES:
             glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
-
-        glPointSize(2)
 
         # Force display
         glutSwapBuffers()

@@ -15,7 +15,7 @@ void main()
 {
 	gl_Position = transform * vPosition;
 
-    eColor = 0.1f * vColor;
+    eColor = vColor;
 
 	// eColor = vColor;
 
