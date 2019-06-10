@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from OpenGL.GL import *
+from OpenGL.GL import shaders
 from OpenGL.GLUT import *
 import glm
 import sys
@@ -30,6 +31,7 @@ PERSPECTIVE_TRANSFORMATION = 2
 
 # Light attributes
 lightPos = glm.vec3(1.2, 1.0, 2.0);
+
 
 class Operator:
     transformation_mode = ORTHO_TRANSFORMATION
@@ -168,14 +170,14 @@ class Operator:
         self.matrix = glm.translate(self.matrix,
                                     glm.vec3([translation_factor_x, translation_factor_y, translation_factor_z]))
 
-        if direction is 'LOWER_X':
-            rotator = [1.0, 0.0, 0.0]
-        elif direction is 'INCREASE_X':
-            rotator = [-1.0, 0.0, 0.0]
-
         if direction is 'LOWER_Y':
-            rotator = [0.0, -1.0, 0.0]
+            rotator = [-1.0, 0.0, 0.0]
         elif direction is 'INCREASE_Y':
+            rotator = [1.0, 0.0, 0.0]
+
+        if direction is 'LOWER_X':
+            rotator = [0.0, -1.0, 0.0]
+        elif direction is 'INCREASE_X':
             rotator = [0.0, 1.0, 0.0]
 
         if direction is 'LOWER_Z':
@@ -197,7 +199,8 @@ class Operator:
         translation_factor_y = self.object.object_center_y
         translation_factor_z = self.object.object_center_z
 
-        self.matrix = glm.translate(self.matrix, glm.vec3([translation_factor_x, translation_factor_y, translation_factor_z]))
+        self.matrix = glm.translate(self.matrix,
+                                    glm.vec3([translation_factor_x, translation_factor_y, translation_factor_z]))
 
         if direction is 'LOWER_X':
             scaler = [1.0 / scaling_factor, 1.0, 1.0]
@@ -259,7 +262,7 @@ class Operator:
 
         colors, vertices = self.object.load_object(image_name)
 
-        # Create vertex buffer object (vbo)
+        # Create vertex buffer object (vbo)matrix
         vbo = glGenBuffers(1)
         glBindBuffer(GL_ARRAY_BUFFER, vbo)
 
@@ -277,6 +280,7 @@ class Operator:
 
         # Load and compile shaders.
         self.program = ShaderProgram(vertex_shader, fragment_shader)
+
         glUseProgram(self.program.program_id)
 
         # Compute a fix transformation matrix.

@@ -1,7 +1,7 @@
 from subprocess import check_output
 import cv2
 
-class Map():
+class Loader():
     application_directory = "./appImage/appImage"
     image_dictionary = {"maxmin2": "./imagens/maxmin2.pgm",
     					"maxmin": "./imagens/maxmin.pgm",
@@ -53,6 +53,6 @@ class Map():
 
 
 if __name__ == "__main__":
-    map = Map()
+    map = Loader()
 
     result = map.get_map(use_script=False)

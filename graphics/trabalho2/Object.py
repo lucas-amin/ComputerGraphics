@@ -1,7 +1,5 @@
 import numpy as np
-from loader import Map
-import math
-
+from Loader import Loader
 
 class Object:
     color1 = [0.1, 0.1, 0.1, 0.7]
@@ -12,7 +10,7 @@ class Object:
         self.colors = list()
 
     def load_object(self, image_name):
-        map = Map()
+        map = Loader()
         self.minimum_value, self.maximum_value, self.map_matrix = map.get_map(use_script=False, image=image_name)
 
         self.width = len(self.map_matrix)
@@ -83,16 +81,16 @@ class Object:
         return value
 
     def add_lines(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
+        # Add first line of triangle
         self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
-
         self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
 
+        # Add second line of triangle
         self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
-
         self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
 
+        # Add third line of triangle
         self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
-
         self.add_attribute(x_coordinate, y_coordinate, neighbor3)
 
     def add_attribute(self, x_coordinate, y_coordinate, z_coordinate):
