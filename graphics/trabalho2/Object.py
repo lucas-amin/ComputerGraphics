@@ -1,5 +1,6 @@
 import numpy as np
 from Loader import Loader
+from Structure import Structure
 
 class Object:
     color1 = [0.1, 0.1, 0.1, 0.7]
@@ -11,6 +12,8 @@ class Object:
 
     def load_object(self, image_name):
         map = Loader()
+        self.structure = Structure()
+
         self.minimum_value, self.maximum_value, self.map_matrix = map.get_map(use_script=False, image=image_name)
 
         self.width = len(self.map_matrix)
@@ -90,11 +93,17 @@ class Object:
         self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
 
         # Add third line of triangle
-        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
-        self.add_attribute(x_coordinate, y_coordinate, neighbor3)
+        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
+        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
+
+        polygon = ((x_coordinate, y_coordinate, z_coordinate),
+                   (x_coordinate + 1.0, y_coordinate, neighbor1),
+                   (x_coordinate, y_coordinate + 1.0, neighbor2))
+
+        self.structure.add_triangle(polygon)
 
     def add_attribute(self, x_coordinate, y_coordinate, z_coordinate):
-        self.vertices.extend([float(x_coordinate + 1.0), float(y_coordinate + 1.0), z_coordinate, 1.0])
+        self.vertices.extend([x_coordinate, y_coordinate, z_coordinate, 1.0])
         self.colors.extend(self.get_color(x_coordinate, y_coordinate, z_coordinate))
 
     def get_color(self, x_coordinate, y_coordinate, z_coordinate):

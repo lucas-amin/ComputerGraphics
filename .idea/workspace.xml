@@ -2,27 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba7cc7fe-4e6f-449d-b8d8-61dfdd6b53b7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/ComputerGraphics.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ComputerGraphics.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/lista6/lista6.3.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/lista6/lista6.3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/Object.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/ShaderProgram.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/freeglut.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/crater.pgm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/crater2.pgm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/crater3.pgm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/crater4.pgm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/maxmin.pgm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/imagens/maxmin2.pgm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/load_pgm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/loader.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/simple.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/simple.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/simple3.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/simple3.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/project1/terreno.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/1717510/terreno.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/1717510/terreno.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/lista7/Object.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/lista7/Object.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/trabalho2/Object.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/trabalho2/Object.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/trabalho2/Structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/trabalho2/Structure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/trabalho2/simple3.frag" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/trabalho2/simple3.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/trabalho2/terreno.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/trabalho2/terreno.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,14 +20,84 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="lista6.3.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/graphics/lista6/lista6.3.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Object.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+            <state relative-caret-position="120">
+              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
               <folding>
-                <element signature="e#23#41#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Structure.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Loader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/graphics/trabalho2/terreno.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.frag">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+              <folding>
+                <marker date="1560175831554" expanded="true" signature="2:840" ph="..." />
+                <marker date="1560175831554" expanded="true" signature="15:840" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.vert">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graphics/testing/simple3.frag">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graphics/testing/simple3.vert">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -69,7 +129,18 @@
       <find>cyg</find>
       <find>display</find>
       <find>vao</find>
+      <find>clearColor</find>
+      <find>glattach</find>
+      <find>shader</find>
+      <find>Sha</find>
+      <find>fragment_shader</find>
+      <find>object</find>
+      <find>x_coordinate</find>
+      <find>eColor</find>
     </findStrings>
+    <replaceStrings>
+      <replace>object_loader</replace>
+    </replaceStrings>
     <dirStrings>
       <dir>C:\Users\lucas\PycharmProjects\ComputerGraphicsgit\ComputerGraphics\graphics\1717510</dir>
     </dirStrings>
@@ -94,14 +165,22 @@
         <option value="$PROJECT_DIR$/graphics/1717510/Object.py" />
         <option value="$PROJECT_DIR$/graphics/1717510/terreno.py" />
         <option value="$PROJECT_DIR$/graphics/lista6/lista6.3.py" />
+        <option value="$PROJECT_DIR$/graphics/trabalho2/simple3.vert" />
+        <option value="$PROJECT_DIR$/graphics/testing/simple3.frag" />
+        <option value="$PROJECT_DIR$/graphics/trabalho2/Object_Loader.py" />
+        <option value="$PROJECT_DIR$/graphics/trabalho2/Loader.py" />
+        <option value="$PROJECT_DIR$/graphics/trabalho2/Object.py" />
+        <option value="$PROJECT_DIR$/graphics/trabalho2/Structure.py" />
+        <option value="$PROJECT_DIR$/graphics/trabalho2/simple3.frag" />
+        <option value="$PROJECT_DIR$/graphics/trabalho2/terreno.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="22" />
-    <option name="y" value="72" />
-    <option name="width" value="1376" />
-    <option name="height" value="754" />
+    <option name="x" value="450" />
+    <option name="y" value="143" />
+    <option name="width" value="1372" />
+    <option name="height" value="738" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -124,13 +203,13 @@
               <item name="ComputerGraphics" type="b2602c69:ProjectViewProjectNode" />
               <item name="ComputerGraphics" type="462c0819:PsiDirectoryNode" />
               <item name="graphics" type="462c0819:PsiDirectoryNode" />
-              <item name="lista6" type="462c0819:PsiDirectoryNode" />
+              <item name="testing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ComputerGraphics" type="b2602c69:ProjectViewProjectNode" />
               <item name="ComputerGraphics" type="462c0819:PsiDirectoryNode" />
               <item name="graphics" type="462c0819:PsiDirectoryNode" />
-              <item name="testing" type="462c0819:PsiDirectoryNode" />
+              <item name="trabalho2" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -141,7 +220,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/lucas/PycharmProjects/ComputerGraphicsgit/ComputerGraphics/graphics/project1/main.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../hand3d" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -162,7 +241,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.lista6.3">
+  <component name="RunManager" selected="Python.terreno (1)">
     <configuration name="lista3_ex1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ComputerGraphics" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,6 +259,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="lista6.3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ComputerGraphics" />
@@ -198,6 +280,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ComputerGraphics" />
@@ -216,6 +301,30 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="terreno (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ComputerGraphics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/graphics/trabalho2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graphics/trabalho2/terreno.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="terreno" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ComputerGraphics" />
@@ -234,15 +343,20 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.lista3_ex1" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.terreno" />
       <item itemvalue="Python.lista6.3" />
+      <item itemvalue="Python.terreno (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.terreno (1)" />
         <item itemvalue="Python.lista6.3" />
         <item itemvalue="Python.terreno" />
         <item itemvalue="Python.main" />
@@ -264,30 +378,45 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="784" extended-state="6" />
-    <editor active="true" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15220588" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.15174672" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32735425" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21973094" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21943574" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49945414" weight="0.40229884" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.41554558" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50054586" side_tool="true" weight="0.41483805" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15174672" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32735425" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21943574" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49945414" visible="true" weight="0.40229884" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50054586" side_tool="true" weight="0.41483805" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,12 +441,46 @@
           <line>192</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graphics/testing/ShaderProgram.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graphics/trabalho2/terreno.py</url>
+          <line>174</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graphics/trabalho2/terreno.py</url>
+          <line>189</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graphics/trabalho2/terreno.py</url>
+          <line>287</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>fragment_shader</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>z_coordinate * self.depth / 255</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>z_coordinate * self.depth</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>len(sys.argv)</expression-string>
         <language-id>Python</language-id>
@@ -334,7 +497,49 @@
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>x_coordinate &gt; 255 or y_coordinate &gt; 255 or z_coordinate &gt; 255</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>x_coordinate &gt; 100</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>y_coordinate &gt; 200</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>self.shader</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>frag_shader</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>shaders</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.program</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.program.program_id</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>self.matrix</expression-string>
         <language-id>Python</language-id>
@@ -343,43 +548,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/graphics/1717510/Object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/1717510/terreno.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4607">
-          <caret line="278" selection-start-line="278" selection-end-line="278" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/1717510/Object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/1717510/terreno.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4726">
-          <caret line="278" selection-start-line="278" selection-end-line="278" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/project1/terreno.py" />
-    <entry file="file://$PROJECT_DIR$/graphics/project1/Object.py" />
-    <entry file="file://$PROJECT_DIR$/graphics/project1/loader.py" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/GLUT/special.py" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/arrays/lists.py" />
     <entry file="file://$USER_HOME$/Anaconda3/envs/ComputerGraphics/Lib/site-packages/OpenGL/raw/GLUT/__init__.py" />
@@ -424,11 +592,98 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/graphics/lista6/lista6.3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+        <state relative-caret-position="300">
+          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding>
             <element signature="e#23#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/ShaderProgram.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/testing/ShaderProgram.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-210">
+          <caret line="22" column="48" lean-forward="true" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/OpenGL/GL/shaders.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="200" column="4" selection-start-line="200" selection-start-column="4" selection-end-line="200" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Object.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Structure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+          <folding>
+            <marker date="1560175831554" expanded="true" signature="2:840" ph="..." />
+            <marker date="1560175831554" expanded="true" signature="15:840" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.vert">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/testing/simple3.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/testing/simple3.vert">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/terreno.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>

@@ -234,7 +234,7 @@ class Operator:
         else:
             image_name = "crater"
 
-        colors, vertices = self.object.generate_object(image_name)
+        colors, vertices = self.object.load_object(image_name)
 
         # Create vertex buffer object (vbo)
         vbo = glGenBuffers(1)

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from OpenGL.GL import *
-from OpenGL.GL import shaders
+
+from OpenGL import GL as gl
+from OpenGL.GL.shaders import compileProgram, compileShader
 from OpenGL.GLUT import *
 import glm
 import sys
@@ -281,6 +283,8 @@ class Operator:
         # Load and compile shaders.
         self.program = ShaderProgram(vertex_shader, fragment_shader)
 
+        self.compile_shaders()
+
         glUseProgram(self.program.program_id)
 
         # Compute a fix transformation matrix.
@@ -299,6 +303,34 @@ class Operator:
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
         glPointSize(1.4)
         glClearColor(0.1, 0.1, 0.1, 0.1)
+
+    def compile_shaders(self):
+        try:
+            self.shader = compileProgram(compileShader(vertex_shader, gl.GL_VERTEX_SHADER),
+                                         compileShader(fragment_shader, gl.GL_FRAGMENT_SHADER))
+
+        except RuntimeError as err:
+            sys.stderr.write(err.args[0])
+            sys.exit(1)
+
+        for uniform in ('Global_ambient',
+                        'Light_ambient',
+                        'Light_diffuse',
+                        'Light_location',
+                        'Material_ambient',
+                        'Material_diffuse'):
+            location = gl.glGetUniformLocation(self.shader, uniform)
+
+            if location in (None, -1):
+                print('Warning, no uniform: %s', (uniform))
+            setattr(self, uniform + '_loc', location)
+
+        for attribute in ('Vertex_position', 'Vertex_Normal'):
+            location = gl.glGetAttribLocation(self.shader, attribute)
+
+            if location in (None, -1):
+                print('Warning, no attribute: %s', (attribute))
+            setattr(self, attribute + '_loc', location)
 
     def Display(self):
         # Clear buffers for drawing.

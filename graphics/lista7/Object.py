@@ -14,7 +14,7 @@ class Object:
         self.object_center_y = 0
         self.object_center_z = 0
 
-    def generate_object(self, image_name):
+    def load_object(self, image_name):
         map = Map()
         self.minimum_value, self.maximum_value, self.map_matrix = map.get_map(use_script=False, image=image_name)
 

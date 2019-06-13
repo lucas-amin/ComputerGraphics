@@ -35,10 +35,12 @@ void main()
 
 #version 330 core
 
-in vec3 eColor;
 out vec3 FragColor;
+
+in vec3 Normal;
+uniform vec3 lightColor;
 
 void main()
 {
-	FragColor = eColor;
+	FragColor = lightColor;
 }
