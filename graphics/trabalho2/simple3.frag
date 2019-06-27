@@ -42,5 +42,7 @@ uniform vec3 lightColor;
 
 void main()
 {
-	FragColor = lightColor * ;
+    // ambient
+    float ambientStrength = 0.5;
+	FragColor = ambientStrength * lightColor;
 }
