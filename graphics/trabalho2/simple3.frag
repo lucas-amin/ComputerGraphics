@@ -42,5 +42,5 @@ uniform vec3 lightColor;
 
 void main()
 {
-	FragColor = lightColor;
+	FragColor = lightColor * ;
 }
