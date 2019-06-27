@@ -8,9 +8,9 @@ import glm
 import sys
 from ShaderProgram import ShaderProgram
 import time
-import math
+from math import sin, cos
 from Object import Object
-
+import numpy as np
 # Globals
 vertex_shader = open("./simple3.vert").read()
 fragment_shader = open("./simple3.frag").read()
@@ -34,6 +34,19 @@ PERSPECTIVE_TRANSFORMATION = 2
 # Light attributes
 lightPos = glm.vec3(1.2, 1.0, 2.0);
 
+object_transform = glm.mat4(1)
+view_origin = glm.vec3(0,0,1)
+view_matrix = glm.lookAt(view_origin, glm.vec3(0,0,0), glm.vec3(0,1,0))
+perspective_matrix = glm.perspective(glm.radians(110), 16/9, 0.1, 100)
+
+# Cylindrical coordinates
+lightRadius = 1
+lightAngle = 0
+lightHeight = 0
+lightPos = glm.vec3(lightRadius*cos(lightAngle),lightHeight,lightRadius*sin(lightAngle))
+lightColor = glm.vec3(1,1,1)
+
+objectColor = glm.vec3(1,0.5,0.31)
 
 class Operator:
     transformation_mode = ORTHO_TRANSFORMATION
@@ -264,26 +277,42 @@ class Operator:
 
         colors, vertices = self.object.load_object(image_name)
 
-        # Create vertex buffer object (vbo)matrix
-        vbo = glGenBuffers(1)
-        glBindBuffer(GL_ARRAY_BUFFER, vbo)
+        normals = np.array([])
 
-        # Copy data to VBO.
+        # 3 floats per vertex, 3 vertices per triangle
+        for i in range(len(vertices)//9):
+            # For P, Q, R, defined counter-clockwise, glm.cross(R-Q, P-Q)
+            RQ = glm.vec3(vertices[9*i+6]-vertices[9*i+3],vertices[9*i+7]-vertices[9*i+4],vertices[9*i+8]-vertices[9*i+5])
+            PQ = glm.vec3(vertices[9*i]-vertices[9*i+3],vertices[9*i+1]-vertices[9*i+4],vertices[9*i+2]-vertices[9*i+5])
+            normal = glm.cross(RQ,PQ)
+            # Insert once for each vertex
+            normals=np.append(normals, [normal.x,normal.y,normal.z]*3)
+            # print(normals)
+
+        normals = normals.astype(np.float32)
+
+        VBO = glGenBuffers(1)
+        glBindBuffer(GL_ARRAY_BUFFER, VBO)
         glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(vertices), vertices, GL_STATIC_DRAW)
-        glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, None)
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(0)
+        #glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*4, 3*4)
+        #glEnableVertexAttribArray(1)
 
-        # Create color buffer object (CBO)
-        cbo = glGenBuffers(1)
-        glBindBuffer(GL_ARRAY_BUFFER, cbo)
-        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(colors), colors, GL_STATIC_DRAW)
+        NBO = glGenBuffers(1)
+        glBindBuffer(GL_ARRAY_BUFFER, NBO)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(normals), normals, GL_STATIC_DRAW)
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(1)
 
+        CBO = glGenBuffers(1)
+        glBindBuffer(GL_ARRAY_BUFFER, CBO)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(colors), colors, GL_STATIC_DRAW)
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, None)
+        glEnableVertexAttribArray(2)
+
         # Load and compile shaders.
         self.program = ShaderProgram(vertex_shader, fragment_shader)
-
-        self.compile_shaders()
 
         glUseProgram(self.program.program_id)
 
@@ -300,57 +329,37 @@ class Operator:
 
         # Enable depth test
         glEnable(GL_DEPTH_TEST)
-        glEnable(GL_LIGHT0)
+        # glEnable(GL_LIGHT0)
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
         glPointSize(1.4)
-        glClearColor(0.1, 0.1, 0.1, 0.1)
-
-    def compile_shaders(self):
-        try:
-            self.shader = compileProgram(compileShader(vertex_shader, gl.GL_VERTEX_SHADER),
-                                         compileShader(fragment_shader, gl.GL_FRAGMENT_SHADER))
-
-        except RuntimeError as err:
-            sys.stderr.write(err.args[0])
-            sys.exit(1)
-
-        for uniform in ('Global_ambient',
-                        'Light_ambient',
-                        'Light_diffuse',
-                        'Light_location',
-                        'Material_ambient',
-                        'Material_diffuse'):
-            location = gl.glGetUniformLocation(self.shader, uniform)
-
-            if location in (None, -1):
-                print('Warning, no uniform: %s', (uniform))
-            setattr(self, uniform + '_loc', location)
-
-        for attribute in ('Vertex_position', 'Vertex_Normal'):
-            location = gl.glGetAttribLocation(self.shader, attribute)
-
-            if location in (None, -1):
-                print('Warning, no attribute: %s', (attribute))
-            setattr(self, attribute + '_loc', location)
+        glClearColor(0.3, 0.3, 0.3, 0.3)
 
     def Display(self):
         # Clear buffers for drawing.
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-        transform = self.perspective_matrix * self.view_matrix * self.matrix
-        transformLoc = glGetUniformLocation(self.program.program_id, "transform")
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(transform))
+        # Load shader uniforms
+        modelLoc = glGetUniformLocation(self.program.program_id, "model")
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm.value_ptr(object_transform))
+        viewLoc = glGetUniformLocation(self.program.program_id, "view")
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm.value_ptr(view_matrix))
+        projectionLoc = glGetUniformLocation(self.program.program_id, "projection")
+        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm.value_ptr(perspective_matrix))
+
+        objColorLoc = glGetUniformLocation(self.program.program_id, "objectColor")
+        glUniform3fv(objColorLoc, 1, glm.value_ptr(objectColor))
+        lightColorLoc = glGetUniformLocation(self.program.program_id, "lightColor")
+        glUniform3fv(lightColorLoc, 1, glm.value_ptr(lightColor))
+        lightPosLoc = glGetUniformLocation(self.program.program_id, "lightPos")
+        glUniform3fv(lightPosLoc, 1, glm.value_ptr(lightPos))
+        viewPosLoc = glGetUniformLocation(self.program.program_id, "viewPos")
+        glUniform3fv(viewPosLoc, 1, glm.value_ptr(view_origin))
 
         # Draw.
         glBindVertexArray(vao)
 
-        if self.visualization_mode is GL_POINTS:
-            glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3)
+        glDrawArrays(GL_TRIANGLES, 0, 12*3);
 
-        elif self.visualization_mode is GL_LINES:
-            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
-
-        # Force display
         glutSwapBuffers()
 
     def catchKey(self, key, x, y):
