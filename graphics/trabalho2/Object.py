@@ -103,7 +103,7 @@ class Object:
         self.structure.add_triangle(polygon)
 
     def add_attribute(self, x_coordinate, y_coordinate, z_coordinate):
-        self.vertices.extend([x_coordinate, y_coordinate, z_coordinate])
+        self.vertices.extend([x_coordinate, y_coordinate, z_coordinate, 1.0])
         self.colors.extend(self.get_color(x_coordinate, y_coordinate, z_coordinate))
 
     def get_color(self, x_coordinate, y_coordinate, z_coordinate):

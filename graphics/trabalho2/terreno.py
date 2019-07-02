@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import math
+
 from OpenGL.GL import *
 
 from OpenGL import GL as gl
@@ -338,9 +340,10 @@ class Operator:
         # Clear buffers for drawing.
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
+        transform = self.perspective_matrix * self.view_matrix * self.matrix
         # Load shader uniforms
         modelLoc = glGetUniformLocation(self.program.program_id, "model")
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm.value_ptr(object_transform))
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm.value_ptr(transform))
         viewLoc = glGetUniformLocation(self.program.program_id, "view")
         glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm.value_ptr(view_matrix))
         projectionLoc = glGetUniformLocation(self.program.program_id, "projection")
@@ -358,8 +361,13 @@ class Operator:
         # Draw.
         glBindVertexArray(vao)
 
-        glDrawArrays(GL_TRIANGLES, 0, 12*3);
+        if self.visualization_mode is GL_POINTS:
+            glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3)
 
+        elif self.visualization_mode is GL_LINES:
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
+
+        # Force display
         glutSwapBuffers()
 
     def catchKey(self, key, x, y):
