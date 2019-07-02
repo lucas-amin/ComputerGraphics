@@ -53,16 +53,20 @@ class Object:
                 neighbor3 = self.map_matrix[i + 1][j + 1]
 
                 # self.add_lines(x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3)
-                self.add_triangle(x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2)
+                self.add_triangle(x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3)
 
         self.vertices = np.array(self.vertices, dtype=np.float32)
         self.colors = np.array(self.colors, dtype=np.float32)
 
-    def add_triangle(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2):
+    def add_triangle(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
         # For P, Q, R, defined counter-clockwise, glm.cross(R-Q, P-Q)
         self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
         self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
         self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
+
+        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
+        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
+        self.add_attribute(x_coordinate + 1.0, y_coordinate + 1.0, neighbor3)
 
     def add_lines(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
         # Add first line of triangle

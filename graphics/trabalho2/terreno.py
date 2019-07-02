@@ -330,7 +330,7 @@ class Operator:
 
         # Enable depth test
         glEnable(GL_DEPTH_TEST)
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
         glPointSize(1.4)
         glClearColor(0.3, 0.3, 0.3, 0.3)
 
