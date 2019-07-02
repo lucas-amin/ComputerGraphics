@@ -275,7 +275,7 @@ class Operator:
         if len(sys.argv) > 1:
             image_name = sys.argv[1]
         else:
-            image_name = "crater4"
+            image_name = "crater3"
 
         colors, vertices = self.object.load_object(image_name)
 

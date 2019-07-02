@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba7cc7fe-4e6f-449d-b8d8-61dfdd6b53b7" name="Default" comment="" />
+    <list default="true" id="ba7cc7fe-4e6f-449d-b8d8-61dfdd6b53b7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/graphics/trabalho2/terreno.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/trabalho2/terreno.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +16,8 @@
       <file leaf-file-name="Object.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Object.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-74">
-              <caret line="64" column="71" lean-forward="true" selection-start-line="64" selection-start-column="71" selection-end-line="64" selection-end-column="71" />
+            <state relative-caret-position="170">
+              <caret line="16" column="70" lean-forward="true" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -35,8 +37,8 @@
       <file leaf-file-name="Loader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="196">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -47,8 +49,8 @@
       <file leaf-file-name="terreno.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/graphics/trabalho2/terreno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="332" column="21" selection-start-line="332" selection-start-column="8" selection-end-line="332" selection-end-column="21" />
+            <state relative-caret-position="415">
+              <caret line="277" column="33" selection-start-line="277" selection-start-column="33" selection-end-line="277" selection-end-column="33" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
               </folding>
@@ -131,8 +133,8 @@
       <find>print(self.mat</find>
       <find>transform</find>
       <find>object_transform</find>
-      <find>self.normalize(</find>
       <find>ROTATION_MODE</find>
+      <find>self.normalize(</find>
     </findStrings>
     <replaceStrings>
       <replace>object_loader</replace>
@@ -455,8 +457,13 @@
           <url>file://$PROJECT_DIR$/graphics/trabalho2/Object.py</url>
           <line>18</line>
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graphics/trabalho2/Loader.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -827,8 +834,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Object.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-74">
-          <caret line="64" column="71" lean-forward="true" selection-start-line="64" selection-start-column="71" selection-end-line="64" selection-end-column="71" />
+        <state relative-caret-position="170">
+          <caret line="16" column="70" lean-forward="true" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -837,8 +844,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="196">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -847,8 +854,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/graphics/trabalho2/terreno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="332" column="21" selection-start-line="332" selection-start-column="8" selection-end-line="332" selection-end-column="21" />
+        <state relative-caret-position="415">
+          <caret line="277" column="33" selection-start-line="277" selection-start-column="33" selection-end-line="277" selection-end-column="33" />
           <folding>
             <element signature="e#23#34#0" expanded="true" />
           </folding>
