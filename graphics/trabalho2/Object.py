@@ -46,42 +46,23 @@ class Object:
             for j in range(self.height - 1):
                 x_coordinate = i
                 y_coordinate = j
-                z_coordinate = self.normalize(self.map_matrix[i][j])
+                z_coordinate = self.map_matrix[i][j]
 
-                neighbor1 = self.normalize(self.map_matrix[i + 1][j])
-                neighbor2 = self.normalize(self.map_matrix[i][j + 1])
-                neighbor3 = self.normalize(self.map_matrix[i + 1][j + 1])
+                neighbor1 = self.map_matrix[i + 1][j]
+                neighbor2 = self.map_matrix[i][j + 1]
+                neighbor3 = self.map_matrix[i + 1][j + 1]
 
-                self.add_lines(x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3)
-
-        self.create_border_lines()
+                # self.add_lines(x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3)
+                self.add_triangle(x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2)
 
         self.vertices = np.array(self.vertices, dtype=np.float32)
         self.colors = np.array(self.colors, dtype=np.float32)
 
-    def create_border_lines(self):
-        for i in range(self.width - 1):
-            z_coordinate = self.normalize(self.map_matrix[i][self.height - 1])
-            z_neighbor = self.normalize(self.map_matrix[i + 1][self.height - 1])
-
-            self.vertices.extend([float(i), float(self.height - 1), z_coordinate, 1.0])
-            self.colors.extend(self.get_color(float(i), float(self.height - 1), z_coordinate))
-
-            self.vertices.extend([float(i + 1.0), float(self.height - 1), z_neighbor, 1.0])
-            self.colors.extend(self.get_color(float(i + 1.0), float(self.height - 1), z_coordinate))
-
-        for j in range(self.height - 1):
-            z_coordinate = self.normalize(self.map_matrix[self.width - 1][j])
-            z_neighbor = self.normalize(self.map_matrix[self.width - 1][j + 1])
-
-            self.vertices.extend([float(self.width - 1.0), float(j), z_coordinate, 1.0])
-            self.colors.extend(self.get_color(float(self.width - 1.0), float(j), z_coordinate))
-
-            self.vertices.extend([float(self.width - 1.0), float(j + 1.0), z_neighbor, 1.0])
-            self.colors.extend(self.get_color(float(self.width - 1.0), float(j + 1.0), z_coordinate))
-
-    def normalize(self, value):
-        return value
+    def add_triangle(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2):
+        # For P, Q, R, defined counter-clockwise, glm.cross(R-Q, P-Q)
+        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
+        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
+        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
 
     def add_lines(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
         # Add first line of triangle
@@ -103,7 +84,7 @@ class Object:
         self.structure.add_triangle(polygon)
 
     def add_attribute(self, x_coordinate, y_coordinate, z_coordinate):
-        self.vertices.extend([x_coordinate, y_coordinate, z_coordinate, 1.0])
+        self.vertices.extend([x_coordinate, y_coordinate, z_coordinate])
         self.colors.extend(self.get_color(x_coordinate, y_coordinate, z_coordinate))
 
     def get_color(self, x_coordinate, y_coordinate, z_coordinate):

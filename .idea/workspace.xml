@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba7cc7fe-4e6f-449d-b8d8-61dfdd6b53b7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graphics/trabalho2/Object.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/trabalho2/Object.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/trabalho2/Structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/trabalho2/Structure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graphics/trabalho2/simple3.frag" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/trabalho2/simple3.frag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graphics/trabalho2/terreno.py" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/trabalho2/terreno.py" afterDir="false" />
     </list>
@@ -20,8 +18,8 @@
       <file leaf-file-name="Object.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Object.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+            <state relative-caret-position="-74">
+              <caret line="64" column="71" lean-forward="true" selection-start-line="64" selection-start-column="71" selection-end-line="64" selection-end-column="71" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -53,8 +51,8 @@
       <file leaf-file-name="terreno.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/graphics/trabalho2/terreno.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="346" column="13" lean-forward="true" selection-start-line="346" selection-start-column="13" selection-end-line="346" selection-end-column="13" />
+            <state relative-caret-position="104">
+              <caret line="282" lean-forward="true" selection-start-line="282" selection-end-line="282" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
               </folding>
@@ -65,8 +63,8 @@
       <file leaf-file-name="simple3.frag" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.frag">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+            <state relative-caret-position="238">
+              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -74,8 +72,8 @@
       <file leaf-file-name="simple3.vert" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.vert">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="34">
+              <caret line="2" column="37" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -109,7 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>scaling_factor</find>
       <find>generate</find>
       <find>trans</find>
       <find>vertex_count</find>
@@ -138,6 +135,8 @@
       <find>print(self.mat</find>
       <find>transform</find>
       <find>object_transform</find>
+      <find>self.normalize(</find>
+      <find>ROTATION_MODE</find>
     </findStrings>
     <replaceStrings>
       <replace>object_loader</replace>
@@ -367,11 +366,11 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32735425" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29446936" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.11509716" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49945414" weight="0.2780269" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49945414" weight="0.3542601" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15147059" />
@@ -453,10 +452,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/graphics/trabalho2/terreno.py</url>
-          <line>318</line>
+          <line>317</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graphics/trabalho2/Object.py</url>
+          <line>18</line>
+        </line-breakpoint>
       </breakpoints>
+      <option name="time" value="1" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -543,13 +547,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.frag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Structure.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -804,20 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.vert">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.frag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -835,10 +818,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.vert">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphics/trabalho2/simple3.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/graphics/trabalho2/Object.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+        <state relative-caret-position="-74">
+          <caret line="64" column="71" lean-forward="true" selection-start-line="64" selection-start-column="71" selection-end-line="64" selection-end-column="71" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -847,8 +851,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/graphics/trabalho2/terreno.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="346" column="13" lean-forward="true" selection-start-line="346" selection-start-column="13" selection-end-line="346" selection-end-column="13" />
+        <state relative-caret-position="104">
+          <caret line="282" lean-forward="true" selection-start-line="282" selection-end-line="282" />
           <folding>
             <element signature="e#23#34#0" expanded="true" />
           </folding>

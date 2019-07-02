@@ -275,7 +275,7 @@ class Operator:
         if len(sys.argv) > 1:
             image_name = sys.argv[1]
         else:
-            image_name = "crater3"
+            image_name = "crater4"
 
         colors, vertices = self.object.load_object(image_name)
 
@@ -287,6 +287,7 @@ class Operator:
             RQ = glm.vec3(vertices[9*i+6]-vertices[9*i+3],vertices[9*i+7]-vertices[9*i+4],vertices[9*i+8]-vertices[9*i+5])
             PQ = glm.vec3(vertices[9*i]-vertices[9*i+3],vertices[9*i+1]-vertices[9*i+4],vertices[9*i+2]-vertices[9*i+5])
             normal = glm.cross(RQ,PQ)
+
             # Insert once for each vertex
             normals=np.append(normals, [normal.x,normal.y,normal.z]*3)
             # print(normals)
@@ -298,8 +299,6 @@ class Operator:
         glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(vertices), vertices, GL_STATIC_DRAW)
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(0)
-        #glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*4, 3*4)
-        #glEnableVertexAttribArray(1)
 
         NBO = glGenBuffers(1)
         glBindBuffer(GL_ARRAY_BUFFER, NBO)
@@ -331,7 +330,6 @@ class Operator:
 
         # Enable depth test
         glEnable(GL_DEPTH_TEST)
-        # glEnable(GL_LIGHT0)
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
         glPointSize(1.4)
         glClearColor(0.3, 0.3, 0.3, 0.3)
@@ -361,11 +359,13 @@ class Operator:
         # Draw.
         glBindVertexArray(vao)
 
-        if self.visualization_mode is GL_POINTS:
-            glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3)
+        # if self.visualization_mode is GL_POINTS:
+        #     glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3)
+        #
+        # elif self.visualization_mode is GL_LINES:
+        #     glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
 
-        elif self.visualization_mode is GL_LINES:
-            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
+        glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3);
 
         # Force display
         glutSwapBuffers()
@@ -398,23 +398,20 @@ class Operator:
                 self.translate_object('UP')
 
             elif mode is ROTATION_MODE:
-                self.rotate_object('INCREASE_Y')
+                self.rotate_object('LOWER_Y')
 
             elif mode is SCALE_MODE:
                 self.scale_object('INCREASE_Y')
 
         if key == GLUT_KEY_DOWN:
             if mode is TRANSLATION_MODE:
-                # self.translate_object([0.0, (-1) * translation, 0.0])
                 self.translate_object('DOWN')
 
             elif mode is ROTATION_MODE:
-                self.rotate_object('LOWER_Y')
+                self.rotate_object('INCREASE_Y')
 
             elif mode is SCALE_MODE:
                 self.scale_object('LOWER_Y')
-
-        print(self.matrix)
 
         transformLoc = glGetUniformLocation(self.program.program_id, "transform")
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm.value_ptr(self.matrix))
