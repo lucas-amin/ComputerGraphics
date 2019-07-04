@@ -60,13 +60,15 @@ class Object:
 
     def add_triangle(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
         # For P, Q, R, defined counter-clockwise, glm.cross(R-Q, P-Q)
-        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
-        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
-        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
 
         self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
         self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
+        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
+
+
         self.add_attribute(x_coordinate + 1.0, y_coordinate + 1.0, neighbor3)
+        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
+        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
 
     def add_lines(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
         # Add first line of triangle
@@ -92,4 +94,5 @@ class Object:
         self.colors.extend(self.get_color(x_coordinate, y_coordinate, z_coordinate))
 
     def get_color(self, x_coordinate, y_coordinate, z_coordinate):
+        #return [0.4 , 0.4, 0.4]
         return [x_coordinate / self.width, y_coordinate / self.height, z_coordinate / self.depth]

@@ -27,7 +27,7 @@ mode = 0
 TRANSLATION_MODE = 0
 ROTATION_MODE = 1
 SCALE_MODE = 2
-vao = program = 0
+vao = vao_arrows = program = 0
 
 ORTHO_TRANSFORMATION = 0
 FRUSTUM_TRANSFORMATION = 1
@@ -263,7 +263,7 @@ class Operator:
         self.object.move(translator)
 
     def Init(self):
-        global program, vao
+        global program, vao, vao_arrows
 
         self.visualization_mode = GL_LINES
 
@@ -293,7 +293,9 @@ class Operator:
             # print(normals)
 
         normals = normals.astype(np.float32)
+        normal_colors = normals
 
+        # Normal vertex buffers
         VBO = glGenBuffers(1)
         glBindBuffer(GL_ARRAY_BUFFER, VBO)
         glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(vertices), vertices, GL_STATIC_DRAW)
@@ -309,6 +311,25 @@ class Operator:
         CBO = glGenBuffers(1)
         glBindBuffer(GL_ARRAY_BUFFER, CBO)
         glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(colors), colors, GL_STATIC_DRAW)
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, None)
+        glEnableVertexAttribArray(2)
+
+        # Arrows buffers
+        vao_arrows = glGenVertexArrays(1)
+        glBindVertexArray(vao_arrows)
+
+        VBO_arrows = glGenBuffers(1)
+        glBindBuffer(GL_ARRAY_BUFFER, VBO_arrows)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(normals), normals, GL_STATIC_DRAW)
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, None)
+        glEnableVertexAttribArray(0)
+
+        vao_colors = glGenVertexArrays(1)
+        glBindVertexArray(vao_colors)
+
+        CBO_arrows = glGenBuffers(1)
+        glBindBuffer(GL_ARRAY_BUFFER, CBO_arrows)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(normal_colors), normal_colors, GL_STATIC_DRAW)
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(2)
 
@@ -358,14 +379,10 @@ class Operator:
 
         # Draw.
         glBindVertexArray(vao)
-
-        # if self.visualization_mode is GL_POINTS:
-        #     glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3)
-        #
-        # elif self.visualization_mode is GL_LINES:
-        #     glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
-
         glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3);
+
+        glBindVertexArray(vao_arrows)
+        glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
 
         # Force display
         glutSwapBuffers()
