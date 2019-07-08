@@ -27,7 +27,7 @@ mode = 0
 TRANSLATION_MODE = 0
 ROTATION_MODE = 1
 SCALE_MODE = 2
-vao = vao_arrows = program = 0
+vao = vao_triangle_normals = vao_edge_normals = program = 0
 
 ORTHO_TRANSFORMATION = 0
 FRUSTUM_TRANSFORMATION = 1
@@ -283,7 +283,7 @@ class Operator:
         self.object.move(translator)
 
     def Init(self):
-        global program, vao, vao_arrows
+        global program, vao, vao_triangle_normals, vao_edge_normals
 
         self.visualization_mode = ONLY_POINTS
 
@@ -299,10 +299,16 @@ class Operator:
 
         colors, vertices = self.object.load_object(image_name)
 
-        normals, normal_arrows = self.object.get_normals()
+        normals, triangle_normals = self.object.get_polygon_normals()
+        normals2, edge_normals = self.object.get_edge_normals()
 
         normals = normals.astype(np.float32)
-        normal_colors = normal_arrows
+
+        triangle_normals = triangle_normals.astype(np.float32)
+        triangle_normal_colors = triangle_normals
+
+        edge_normals = edge_normals.astype(np.float32)
+        edge_normals_colors = edge_normals
 
         # Normal vertex buffers
         VBO = glGenBuffers(1)
@@ -323,22 +329,46 @@ class Operator:
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(2)
 
-        # Arrows buffers
-        vao_arrows = glGenVertexArrays(1)
-        glBindVertexArray(vao_arrows)
+        # ----------------------------------------------------------------------
+        # Triangle normal buffers
+        # ----------------------------------------------------------------------
+        vao_triangle_normals = glGenVertexArrays(1)
+        glBindVertexArray(vao_triangle_normals)
 
-        VBO_arrows = glGenBuffers(1)
-        glBindBuffer(GL_ARRAY_BUFFER, VBO_arrows)
-        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(normal_arrows), normal_arrows, GL_STATIC_DRAW)
+        VBO_edge_arrows = glGenBuffers(1)
+        glBindBuffer(GL_ARRAY_BUFFER, VBO_edge_arrows)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(triangle_normals), triangle_normals, GL_STATIC_DRAW)
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(0)
 
-        vao_colors = glGenVertexArrays(1)
-        glBindVertexArray(vao_colors)
+        vao_edge_normal_colors = glGenVertexArrays(1)
+        glBindVertexArray(vao_edge_normal_colors)
 
         CBO_arrows = glGenBuffers(1)
         glBindBuffer(GL_ARRAY_BUFFER, CBO_arrows)
-        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(normal_colors), normal_colors, GL_STATIC_DRAW)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(triangle_normal_colors), triangle_normal_colors, GL_STATIC_DRAW)
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, None)
+        glEnableVertexAttribArray(2)
+
+        # ----------------------------------------------------------------------
+        # Edge normal buffers
+        # ----------------------------------------------------------------------
+        vao_edge_normals = glGenVertexArrays(1)
+        glBindVertexArray(vao_edge_normals)
+
+        VBO_edge_arrows = glGenBuffers(1)
+        glBindBuffer(GL_ARRAY_BUFFER, VBO_edge_arrows)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(edge_normals), edge_normals, GL_STATIC_DRAW)
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, None)
+        glEnableVertexAttribArray(0)
+
+        vao_edge_normal_colors = glGenVertexArrays(1)
+        glBindVertexArray(vao_edge_normal_colors)
+
+        CBO_arrows = glGenBuffers(1)
+        glBindBuffer(GL_ARRAY_BUFFER, CBO_arrows)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(edge_normals_colors), edge_normals_colors,
+                     GL_STATIC_DRAW)
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(2)
 
@@ -398,13 +428,13 @@ class Operator:
         elif self.visualization_mode == POINTS_EDGES_POLYGONS:
             glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
 
-            glBindVertexArray(vao_arrows)
+            glBindVertexArray(vao_triangle_normals)
             glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
 
         elif self.visualization_mode == POINTS_EDGES_VERTEX:
             glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
 
-            glBindVertexArray(vao_arrows)
+            glBindVertexArray(vao_edge_normals)
             glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
 
         elif self.visualization_mode is TERRAIN_CONSTANT:
@@ -413,7 +443,7 @@ class Operator:
         elif self.visualization_mode is TERRAIN_SMOOTH:
             glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3);
 
-            glBindVertexArray(vao_arrows)
+            glBindVertexArray(vao_triangle_normals)
             glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
 
 

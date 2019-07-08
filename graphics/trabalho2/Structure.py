@@ -43,4 +43,4 @@ class Structure():
 
         normal = np.cross(second_point - first_point, third_point - first_point)
 
-        return
+        return normal

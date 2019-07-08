@@ -33,16 +33,17 @@ class Object:
 
         return self.colors, self.vertices
 
-    def get_normals(self):
+    def get_polygon_normals(self):
         normals = np.array([])
-        normal_arrows = np.array([])
+        normal_arrows = []
 
         # 3 floats per vertex, 3 vertices per triangle
         for i in range(len(self.vertices) // 9):
             P = [self.vertices[9 * i], self.vertices[9 * i + 1], self.vertices[9 * i + 2]]
             Q = [self.vertices[9 * i + 3], self.vertices[9 * i + 4], self.vertices[9 * i + 5]]
             R = [self.vertices[9 * i + 6], self.vertices[9 * i + 7], self.vertices[9 * i + 8]]
-            middle_point = [P[0] + Q[0] + R[0] / 3, P[1] + Q[1] + R[1] / 3, P[2] + Q[2] + R[2] / 3]
+
+            middle_point = [(P[0] + Q[0] + R[0]) / 3, (P[1] + Q[1] + R[1]) / 3, ((P[2] + Q[2] + R[2]) / 3)]
 
             # For P, Q, R, defined counter-clockwise, glm.cross(R-Q, P-Q)
             RQ = glm.vec3(self.vertices[9 * i + 6] - self.vertices[9 * i + 3],
@@ -59,16 +60,90 @@ class Object:
             normal_y = middle_point[1] + normal.y
             normal_z = middle_point[2] + normal.z
 
-            print(middle_point, normal.x, normal.y, normal.z)
-            normal_arrows = np.append(normal_arrows, [middle_point[0], middle_point[1], middle_point[2], normal_x, normal_y, normal_z])
+            # print(middle_point, normal.x, normal.y, normal.z)
+
+            normal_arrows.extend([middle_point[0], middle_point[1], middle_point[2]])
+            normal_arrows.extend([normal_x, normal_y, normal_z])
 
             # Insert once for each vertex
             normals = np.append(normals, [normal.x, normal.y, normal.z] * 3)
 
-        return normals, normal_arrows
+        return normals, np.array(normal_arrows)
+
+    def get_edge_normals(self):
+        normals = np.array([])
+        edge_normals = []
+
+        # 3 floats per vertex, 3 vertices per triangle
+        for i in range(len(self.vertices) // 9):
+            P = [self.vertices[9 * i], self.vertices[9 * i + 1], self.vertices[9 * i + 2]]
+            Q = [self.vertices[9 * i + 3], self.vertices[9 * i + 4], self.vertices[9 * i + 5]]
+            R = [self.vertices[9 * i + 6], self.vertices[9 * i + 7], self.vertices[9 * i + 8]]
+
+            # For P, Q, R, defined counter-clockwise, glm.cross(R-Q, P-Q)
+            RQ = glm.vec3(self.vertices[9 * i + 6] - self.vertices[9 * i + 3],
+                          self.vertices[9 * i + 7] - self.vertices[9 * i + 4],
+                          self.vertices[9 * i + 8] - self.vertices[9 * i + 5])
+
+            PQ = glm.vec3(self.vertices[9 * i] - self.vertices[9 * i + 3],
+                          self.vertices[9 * i + 1] - self.vertices[9 * i + 4],
+                          self.vertices[9 * i + 2] - self.vertices[9 * i + 5])
+
+            PR = glm.vec3(self.vertices[9 * i] - self.vertices[9 * i + 6],
+                          self.vertices[9 * i + 1] - self.vertices[9 * i + 7],
+                          self.vertices[9 * i + 2] - self.vertices[9 * i + 8])
+
+            normal = glm.normalize(glm.cross(RQ, PQ))
+
+            edge_1 = glm.normalize(glm.cross(RQ, normal))  # glm.normalize(glm.cross(R, Q))
+            edge_2 = glm.normalize(glm.cross(PQ, normal))  # glm.normalize(glm.cross(P, Q))
+            edge_3 = glm.normalize(glm.cross(PR, normal))  # glm.normalize(glm.cross(P, R))
+
+            # Edge R-Q
+            edge_1_center_x = ((R[0] + Q[0]) / 2)
+            edge_1_x = edge_1_center_x + edge_1.x
+
+            edge_1_center_y = ((R[1] + Q[1]) / 2)
+            edge_1_y = edge_1_center_y + edge_1.y
+
+            edge_1_center_z = ((R[2] + Q[2]) / 2)
+            edge_1_z = edge_1_center_z + edge_1.z
+
+            edge_normals.extend([edge_1_center_x, edge_1_center_y, edge_1_center_z])
+            edge_normals.extend([edge_1_x, edge_1_y, edge_1_z])
+
+            # Edge P-Q
+            edge_2_center_x = ((P[0] + Q[0]) / 2)
+            edge_2_x = edge_2_center_x + edge_2.x
+
+            edge_2_center_y = ((P[1] + Q[1]) / 2)
+            edge_2_y = edge_2_center_y + edge_2.y
+
+            edge_2_center_z = ((P[2] + Q[2]) / 2)
+            edge_2_z = edge_2_center_z + edge_2.z
+
+            edge_normals.extend([edge_2_center_x, edge_2_center_y, edge_2_center_z])
+            edge_normals.extend([edge_2_x, edge_2_y, edge_2_z])
+
+            # Edge P-R
+            edge_3_center_x = ((P[0] + R[0]) / 2)
+            edge_3_x = edge_3_center_x + edge_3.x
+
+            edge_3_center_y = ((P[1] + R[1]) / 2)
+            edge_3_y = edge_3_center_y + edge_3.y
+
+            edge_3_center_z = ((P[2] + R[2]) / 2)
+            edge_3_z = edge_3_center_z + edge_3.z
+
+            edge_normals.extend([edge_3_center_x, edge_3_center_y, edge_3_center_z])
+            edge_normals.extend([edge_3_x, edge_3_y, edge_3_z])
+
+            # Insert once for each vertex
+            normals = np.append(normals, [normal.x, normal.y, normal.z] * 3)
+
+        return normals, np.array(edge_normals)
 
     def move(self, translation_vector):
-        print(translation_vector)
         self.object_center_x += translation_vector[0]
         self.object_center_y += translation_vector[1]
         self.object_center_z += translation_vector[2]
@@ -98,33 +173,13 @@ class Object:
 
     def add_triangle(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
         # For P, Q, R, defined counter-clockwise, glm.cross(R-Q, P-Q)
+        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
+        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
+        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
 
         self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
         self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
-        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
-
         self.add_attribute(x_coordinate + 1.0, y_coordinate + 1.0, neighbor3)
-        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
-        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
-
-        polygon = ((x_coordinate, y_coordinate, z_coordinate),
-                   (x_coordinate + 1.0, y_coordinate, neighbor1),
-                   (x_coordinate, y_coordinate + 1.0, neighbor2))
-
-        self.structure.add_triangle(polygon)
-
-    def add_lines(self, x_coordinate, y_coordinate, z_coordinate, neighbor1, neighbor2, neighbor3):
-        # Add first line of triangle
-        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
-        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
-
-        # Add second line of triangle
-        self.add_attribute(x_coordinate, y_coordinate, z_coordinate)
-        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
-
-        # Add third line of triangle
-        self.add_attribute(x_coordinate + 1.0, y_coordinate, neighbor1)
-        self.add_attribute(x_coordinate, y_coordinate + 1.0, neighbor2)
 
         polygon = ((x_coordinate, y_coordinate, z_coordinate),
                    (x_coordinate + 1.0, y_coordinate, neighbor1),
