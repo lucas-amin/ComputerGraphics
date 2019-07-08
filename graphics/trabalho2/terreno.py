@@ -50,6 +50,13 @@ lightColor = glm.vec3(1,1,1)
 
 objectColor = glm.vec3(1,0.5,0.31)
 
+ONLY_POINTS = "ONLY_POINTS"
+POINTS_AND_EDGES = "POINTS_AND_EDGES"
+POINTS_EDGES_POLYGONS = "POINTS_EDGES_POLYGONS"
+POINTS_EDGES_VERTEX = "POINTS_EDGES_VERTEX"
+TERRAIN_CONSTANT = "TERRAIN_CONSTANT"
+TERRAIN_SMOOTH = "TERRAIN_SMOOTH"
+
 class Operator:
     transformation_mode = ORTHO_TRANSFORMATION
 
@@ -131,10 +138,23 @@ class Operator:
             loop = not loop
 
         if key is b'v':
-            if self.visualization_mode is GL_LINES:
-                self.visualization_mode = GL_POINTS
-            else:
-                self.visualization_mode = GL_LINES
+            if self.visualization_mode is ONLY_POINTS:
+                self.visualization_mode = POINTS_AND_EDGES
+
+            elif self.visualization_mode is POINTS_AND_EDGES:
+                self.visualization_mode = POINTS_EDGES_POLYGONS
+
+            elif self.visualization_mode is POINTS_EDGES_POLYGONS:
+                self.visualization_mode = POINTS_EDGES_VERTEX
+
+            elif self.visualization_mode is POINTS_EDGES_VERTEX:
+                self.visualization_mode = TERRAIN_CONSTANT
+
+            elif self.visualization_mode is TERRAIN_CONSTANT:
+                self.visualization_mode = TERRAIN_SMOOTH
+
+            elif self.visualization_mode is TERRAIN_SMOOTH:
+                self.visualization_mode = ONLY_POINTS
 
         if key is b'c':
             self.set_perspective()
@@ -265,7 +285,7 @@ class Operator:
     def Init(self):
         global program, vao, vao_arrows
 
-        self.visualization_mode = GL_LINES
+        self.visualization_mode = ONLY_POINTS
 
         vao = glGenVertexArrays(1)
         glBindVertexArray(vao)
@@ -275,25 +295,14 @@ class Operator:
         if len(sys.argv) > 1:
             image_name = sys.argv[1]
         else:
-            image_name = "crater3"
+            image_name = "crater4"
 
         colors, vertices = self.object.load_object(image_name)
 
-        normals = np.array([])
-
-        # 3 floats per vertex, 3 vertices per triangle
-        for i in range(len(vertices)//9):
-            # For P, Q, R, defined counter-clockwise, glm.cross(R-Q, P-Q)
-            RQ = glm.vec3(vertices[9*i+6]-vertices[9*i+3],vertices[9*i+7]-vertices[9*i+4],vertices[9*i+8]-vertices[9*i+5])
-            PQ = glm.vec3(vertices[9*i]-vertices[9*i+3],vertices[9*i+1]-vertices[9*i+4],vertices[9*i+2]-vertices[9*i+5])
-            normal = glm.cross(RQ,PQ)
-
-            # Insert once for each vertex
-            normals=np.append(normals, [normal.x,normal.y,normal.z]*3)
-            # print(normals)
+        normals, normal_arrows = self.object.get_normals()
 
         normals = normals.astype(np.float32)
-        normal_colors = normals
+        normal_colors = normal_arrows
 
         # Normal vertex buffers
         VBO = glGenBuffers(1)
@@ -320,7 +329,7 @@ class Operator:
 
         VBO_arrows = glGenBuffers(1)
         glBindBuffer(GL_ARRAY_BUFFER, VBO_arrows)
-        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(normals), normals, GL_STATIC_DRAW)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(normal_arrows), normal_arrows, GL_STATIC_DRAW)
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(0)
 
@@ -352,7 +361,7 @@ class Operator:
         # Enable depth test
         glEnable(GL_DEPTH_TEST)
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
-        glPointSize(1.4)
+        glPointSize(2.5)
         glClearColor(0.3, 0.3, 0.3, 0.3)
 
     def Display(self):
@@ -360,6 +369,7 @@ class Operator:
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         transform = self.perspective_matrix * self.view_matrix * self.matrix
+
         # Load shader uniforms
         modelLoc = glGetUniformLocation(self.program.program_id, "model")
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm.value_ptr(transform))
@@ -379,10 +389,33 @@ class Operator:
 
         # Draw.
         glBindVertexArray(vao)
-        glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3);
+        if self.visualization_mode == ONLY_POINTS:
+            glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3);
 
-        glBindVertexArray(vao_arrows)
-        glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+        elif self.visualization_mode == POINTS_AND_EDGES:
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+
+        elif self.visualization_mode == POINTS_EDGES_POLYGONS:
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+
+            glBindVertexArray(vao_arrows)
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+
+        elif self.visualization_mode == POINTS_EDGES_VERTEX:
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+
+            glBindVertexArray(vao_arrows)
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+
+        elif self.visualization_mode is TERRAIN_CONSTANT:
+            glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3);
+
+        elif self.visualization_mode is TERRAIN_SMOOTH:
+            glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3);
+
+            glBindVertexArray(vao_arrows)
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+
 
         # Force display
         glutSwapBuffers()

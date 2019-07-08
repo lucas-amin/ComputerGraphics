@@ -1,3 +1,5 @@
+import glm
+
 import numpy as np
 
 class Structure():
@@ -41,4 +43,4 @@ class Structure():
 
         normal = np.cross(second_point - first_point, third_point - first_point)
 
-        return normal
+        return
