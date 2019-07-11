@@ -32,15 +32,3 @@ class Structure():
     def add_polygon(self, polygon):
         self.polygons.extend(polygon)
 
-    @staticmethod
-    def get_triangle_normal(triangle):
-        first_line = triangle[0]
-        second_line = triangle[1]
-
-        first_point = first_line[0]
-        second_point = first_line[1]
-        third_point = second_line[2]
-
-        normal = np.cross(second_point - first_point, third_point - first_point)
-
-        return normal

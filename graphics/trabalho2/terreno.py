@@ -13,6 +13,7 @@ import time
 from math import sin, cos
 from Object import Object
 import numpy as np
+
 # Globals
 vertex_shader = open("./simple3.vert").read()
 fragment_shader = open("./simple3.frag").read()
@@ -37,23 +38,23 @@ PERSPECTIVE_TRANSFORMATION = 2
 lightPos = glm.vec3(1.2, 1.0, 2.0);
 
 object_transform = glm.mat4(1)
-view_origin = glm.vec3(0,0,1)
-view_matrix = glm.lookAt(view_origin, glm.vec3(0,0,0), glm.vec3(0,1,0))
-perspective_matrix = glm.perspective(glm.radians(110), 16/9, 0.1, 100)
+view_origin = glm.vec3(0, 0, 1)
+view_matrix = glm.lookAt(view_origin, glm.vec3(0, 0, 0), glm.vec3(0, 1, 0))
+perspective_matrix = glm.perspective(glm.radians(110), 16 / 9, 0.1, 100)
 
 # Cylindrical coordinates
 lightRadius = 1
 lightAngle = 0
 lightHeight = 0
-lightPos = glm.vec3(lightRadius*cos(lightAngle),lightHeight,lightRadius*sin(lightAngle))
-lightColor = glm.vec3(1,1,1)
+lightPos = glm.vec3(lightRadius * cos(lightAngle), lightHeight, lightRadius * sin(lightAngle))
+lightColor = glm.vec3(1, 1, 1)
 
-objectColor = glm.vec3(1,0.5,0.31)
+objectColor = glm.vec3(1, 0.4, 0.25)
 
 ONLY_POINTS = "ONLY_POINTS"
 POINTS_AND_EDGES = "POINTS_AND_EDGES"
-POINTS_EDGES_POLYGONS = "POINTS_EDGES_POLYGONS"
-POINTS_EDGES_VERTEX = "POINTS_EDGES_VERTEX"
+POINTS_EDGES_TRIANGLES = "POINTS_EDGES_POLYGONS"
+POINTS_EDGES_VERTICES = "POINTS_EDGES_VERTEX"
 TERRAIN_CONSTANT = "TERRAIN_CONSTANT"
 TERRAIN_SMOOTH = "TERRAIN_SMOOTH"
 
@@ -61,7 +62,7 @@ class Operator:
     transformation_mode = ORTHO_TRANSFORMATION
 
     def set_perspective(self):
-        view_origin = glm.vec3(0, 0, 1)
+        view_origin = glm.vec3(0, 0, -1)
         self.view_matrix = glm.lookAt(view_origin, glm.vec3(0, 0, 0), glm.vec3(0, 1, 0))
 
         if self.transformation_mode % 3 is ORTHO_TRANSFORMATION:
@@ -142,12 +143,12 @@ class Operator:
                 self.visualization_mode = POINTS_AND_EDGES
 
             elif self.visualization_mode is POINTS_AND_EDGES:
-                self.visualization_mode = POINTS_EDGES_POLYGONS
+                self.visualization_mode = POINTS_EDGES_TRIANGLES
 
-            elif self.visualization_mode is POINTS_EDGES_POLYGONS:
-                self.visualization_mode = POINTS_EDGES_VERTEX
+            elif self.visualization_mode is POINTS_EDGES_TRIANGLES:
+                self.visualization_mode = POINTS_EDGES_VERTICES
 
-            elif self.visualization_mode is POINTS_EDGES_VERTEX:
+            elif self.visualization_mode is POINTS_EDGES_VERTICES:
                 self.visualization_mode = TERRAIN_CONSTANT
 
             elif self.visualization_mode is TERRAIN_CONSTANT:
@@ -295,22 +296,21 @@ class Operator:
         if len(sys.argv) > 1:
             image_name = sys.argv[1]
         else:
-            image_name = "crater4"
+            image_name = "maxmin2"
 
         colors, vertices = self.object.load_object(image_name)
 
-        normals, triangle_normals = self.object.get_polygon_normals()
-        normals2, edge_normals = self.object.get_edge_normals()
+        normals, triangle_normals, edge_normals = self.object.get_normals()
 
-        normals = normals.astype(np.float32)
-
+        # Treat edge normals
         triangle_normals = triangle_normals.astype(np.float32)
-        triangle_normal_colors = triangle_normals
 
+        # Format edge normals
         edge_normals = edge_normals.astype(np.float32)
-        edge_normals_colors = edge_normals
 
+        # ----------------------------------------------------------------------
         # Normal vertex buffers
+        # ----------------------------------------------------------------------
         VBO = glGenBuffers(1)
         glBindBuffer(GL_ARRAY_BUFFER, VBO)
         glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(vertices), vertices, GL_STATIC_DRAW)
@@ -346,7 +346,8 @@ class Operator:
 
         CBO_arrows = glGenBuffers(1)
         glBindBuffer(GL_ARRAY_BUFFER, CBO_arrows)
-        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(triangle_normal_colors), triangle_normal_colors, GL_STATIC_DRAW)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(triangle_normals), triangle_normals,
+                     GL_STATIC_DRAW)
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, None)
         glEnableVertexAttribArray(2)
 
@@ -365,12 +366,11 @@ class Operator:
         vao_edge_normal_colors = glGenVertexArrays(1)
         glBindVertexArray(vao_edge_normal_colors)
 
-        CBO_arrows = glGenBuffers(1)
-        glBindBuffer(GL_ARRAY_BUFFER, CBO_arrows)
-        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(edge_normals_colors), edge_normals_colors,
-                     GL_STATIC_DRAW)
-        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, None)
-        glEnableVertexAttribArray(2)
+        NBO_edge = glGenBuffers(1)
+        glBindBuffer(GL_ARRAY_BUFFER, NBO_edge)
+        glBufferData(GL_ARRAY_BUFFER, ArrayDatatype.arrayByteCount(edge_normals), edge_normals, GL_STATIC_DRAW)
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, None)
+        glEnableVertexAttribArray(1)
 
         # Load and compile shaders.
         self.program = ShaderProgram(vertex_shader, fragment_shader)
@@ -392,7 +392,7 @@ class Operator:
         glEnable(GL_DEPTH_TEST)
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
         glPointSize(2.5)
-        glClearColor(0.3, 0.3, 0.3, 0.3)
+        glClearColor(0.2, 0.2, 0.2, 0.2)
 
     def Display(self):
         # Clear buffers for drawing.
@@ -403,49 +403,55 @@ class Operator:
         # Load shader uniforms
         modelLoc = glGetUniformLocation(self.program.program_id, "model")
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm.value_ptr(transform))
+
         viewLoc = glGetUniformLocation(self.program.program_id, "view")
         glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm.value_ptr(view_matrix))
+
         projectionLoc = glGetUniformLocation(self.program.program_id, "projection")
         glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm.value_ptr(perspective_matrix))
 
         objColorLoc = glGetUniformLocation(self.program.program_id, "objectColor")
         glUniform3fv(objColorLoc, 1, glm.value_ptr(objectColor))
+
         lightColorLoc = glGetUniformLocation(self.program.program_id, "lightColor")
         glUniform3fv(lightColorLoc, 1, glm.value_ptr(lightColor))
+
         lightPosLoc = glGetUniformLocation(self.program.program_id, "lightPos")
         glUniform3fv(lightPosLoc, 1, glm.value_ptr(lightPos))
+
         viewPosLoc = glGetUniformLocation(self.program.program_id, "viewPos")
         glUniform3fv(viewPosLoc, 1, glm.value_ptr(view_origin))
 
-        # Draw.
+        # Draw different visualization modes
+
         glBindVertexArray(vao)
         if self.visualization_mode == ONLY_POINTS:
-            glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3);
+            glDrawArrays(GL_POINTS, 0, self.object.vertex_count * 3)
 
         elif self.visualization_mode == POINTS_AND_EDGES:
-            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
 
-        elif self.visualization_mode == POINTS_EDGES_POLYGONS:
-            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+        elif self.visualization_mode == POINTS_EDGES_TRIANGLES:
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
 
             glBindVertexArray(vao_triangle_normals)
-            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
 
-        elif self.visualization_mode == POINTS_EDGES_VERTEX:
-            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+        elif self.visualization_mode == POINTS_EDGES_VERTICES:
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
 
             glBindVertexArray(vao_edge_normals)
-            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
 
         elif self.visualization_mode is TERRAIN_CONSTANT:
-            glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3);
+            glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3)
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
 
         elif self.visualization_mode is TERRAIN_SMOOTH:
-            glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3);
+            glDrawArrays(GL_TRIANGLES, 0, self.object.vertex_count * 3)
+            glBindVertexArray(vao_edge_normals)
 
-            glBindVertexArray(vao_triangle_normals)
-            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3);
-
+            glDrawArrays(GL_LINES, 0, self.object.vertex_count * 3)
 
         # Force display
         glutSwapBuffers()
